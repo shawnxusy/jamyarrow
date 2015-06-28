@@ -29,12 +29,13 @@ class UserSignupForm(forms.Form):
 		attrs={'placeholder': '(###) ###-####', 'class': 'form-control', 'required': ''}))
 
 	cancer_type = forms.ChoiceField(choices=Patient.CANCER_TYPES)
+	cancer_stage = forms.IntegerField(max_value=4)
 	
 
 	def clean(self):
 		# Calls our parent (forms.Form) .clean function, gets a dictionary
 		# of cleaned data as a result
-		cleaned_data = super(MealUserSignupForm, self).clean()
+		cleaned_data = super(UserSignupForm, self).clean()
 
 		# Confirms that the two password fields match
 		password1 = cleaned_data.get('password1')

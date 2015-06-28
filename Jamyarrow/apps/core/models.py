@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 #class for patient
-class Patient:
+class Patient(models.Model):
 	LUNG = 'L'
 	BREAST = 'B'
 	COLORECTUM = 'C'
@@ -32,3 +32,6 @@ class Patient:
 	cancer_type = models.CharField(max_length=1,
 									choices=CANCER_TYPES)
 	cancer_stage = models.IntegerField(default=1)
+
+	def __unicode__(self):
+		return u'%s' % self.name
