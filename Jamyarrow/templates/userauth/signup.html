@@ -1,0 +1,21 @@
+{% extends "site_base.html" %}
+
+{% block site_title %} {{ block.super }} - Signup {% endblock %}
+
+{% block container %}
+	<div class="user-signup-form">
+		<form method="post" action="{% url 'signup' %}">
+		    <fieldset>
+		        <legend>Sign up</legend>
+				{{ signup_form.errors }}
+		        {% for field in signup_form.visible_fields %}
+			        {{ field.errors }}
+			        {{ field.label_tag }}
+					{{ field }}
+		        {% endfor %}
+		        <button type="submit" class="button button-primary">Sign up</button>
+		    </fieldset>
+		    {% csrf_token %}
+		</form>
+	</div>
+{% endblock %}
