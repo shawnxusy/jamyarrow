@@ -27,6 +27,7 @@ def signup(request):
 
 		# Mark the mealuser as inactive
 		new_patient = Patient(user=new_user,
+							name=user_signup_form.cleaned_data['name'],
 							phone=user_signup_form.cleaned_data['phone'],
 							cancer_type=user_signup_form.cleaned_data['cancer_type'],
 							cancer_stage=user_signup_form.cleaned_data['cancer_stage'])

@@ -1,0 +1,29 @@
+{% extends "site_base.html" %}
+
+{% block site_title %} {{ block.super }} - Signin {% endblock %}
+
+{% block container %}
+<div class="user-signup-form">
+    <form method="post" action="{% url 'login' %}">
+        <fieldset>
+            <legend>Login</legend>
+
+            {% if form.errors %}
+            <p class="error-message">Incorrect username or password.</p>
+            {% endif %}
+
+            {% for field in form.visible_fields %}
+            {{ field.label_tag }}
+            {{ field }}
+            {% endfor %}
+
+        	<input type="hidden" name="next" value="{{ next }}" />
+
+        	<button type="submit" class="pure-button button-primary">Login</button>
+			<a class="pure-button button-primary" href="{% url 'signup' %}">Sign Up</a>
+
+        </fieldset>
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock %}

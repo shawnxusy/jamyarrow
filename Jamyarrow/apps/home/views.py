@@ -6,6 +6,6 @@ def homepage(request):
 	context = {}
 
 	if not request.user.is_authenticated():
-		return redirect(reverse('signup'))
+		return redirect(reverse('login'))
 
 	return render(request, 'home/index.html', context)

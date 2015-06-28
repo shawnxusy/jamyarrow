@@ -64,6 +64,8 @@ TEMPLATE_DIRS = (
     PROJECT_PATH + '/templates/',
 )
 
+LOGIN_REDIRECT_URL = '/'
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
