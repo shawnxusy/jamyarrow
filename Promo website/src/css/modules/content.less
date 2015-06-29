@@ -1,0 +1,469 @@
+.content {
+
+	.overview {
+		height: 350px;
+		background-color: @teal;
+		padding: 0 10%;
+		overflow: hidden;
+
+		@media (max-width: @screen-sm) {
+			height: 500px;
+		}
+
+		.jam-path-overview-pre {
+			height: 60px;
+		}
+
+		#overview-icon-diamond {
+			margin-top: 0;
+		}
+
+		.overview-ventana-logo {
+			padding-top: 10px;
+
+			img {
+				@media (max-width: @screen-sm) {
+					width: 80%;
+				}
+			}
+		}
+
+		.overview-title {
+			margin-top: 30px;
+			h3 {
+				font-weight: 700;
+			}
+		}
+
+		.overview-content {
+			margin-top: 30px;
+		}
+
+		.jam-path-overview-post {
+			margin-top: 160px;
+			height: 80px;
+
+			@media (max-width: @screen-sm) {
+				margin-top: 70px;
+			}
+		}
+
+	}
+
+	.process {
+		height: 350px;
+		background-color: @white;
+		padding: 0 10%;
+
+		@media (max-width: @screen-sm) {
+			height: 550px;
+		}
+
+		.jam-path-process {
+			height: 80px;
+		}
+
+		.process-title {
+			margin-top: 20px;
+			h3 {
+				font-weight: 700;
+			}
+		}
+
+		.process-icon {
+			margin-top: 50px;
+
+			h1 {
+				font-size: @xh;
+			}
+
+			p {
+				font-weight: 700;
+			}
+		}
+	}
+
+	.research {
+		height: 450px;
+		background-image: url("../assets/images/ci_interview.jpg");
+		background-size: cover;
+		position: relative;
+		padding-top: 100px;
+
+		@media (max-width: @screen-sm) {
+			height: 575px;
+			background-position: center;
+		}
+
+		.research-cover-block {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 450px;
+			background-image: url("../assets/images/subtle_dots_trans.png");
+
+			@media (max-width: @screen-sm) {
+				height: 575px;
+			}
+		}
+
+		.research-title {
+			padding: 0 20%;
+			h3 {
+				font-weight: 700;
+			}
+		}
+
+		.research-content {
+			margin-top: 25px;
+			padding: 0 20%;
+		}
+	}
+
+	.research-process {
+		height: 850px;
+		background-color: @white;
+		position: relative;
+
+		@media (max-width: @screen-sm) {
+			height: 675px;
+		}
+
+		.jam-path-research-pre {
+			margin-top: 60px;
+			height: 60px;
+
+			@media (max-width: @screen-sm) {
+				margin-right: ~"calc(5% + 18px)" !important;
+				margin-top: 20px;
+				height: 40px;
+			}
+		}
+
+		#jar-seed-container {
+			position: relative;
+			margin-right: 450px;
+
+			@media (max-width: @screen-sm) {
+				margin-right: 0px;
+			}
+
+			#jar-seed {
+				width: 96px;
+
+				@media (max-width: @screen-sm) {
+					width: 48px;
+				}
+			}
+
+			&:before {
+				content: url("../assets/images/seed-text.svg");
+				height: auto;
+				width: 450px;
+				display: inline-block;
+				vertical-align: top;
+
+				@media (max-width: @screen-sm) {
+					width: ~"calc(90% - 48px)";
+				}
+			};
+		}
+
+		.jam-path-research-mid-1 {
+			margin-top: -180px;
+			height: 150px;
+
+			@media (max-width: @screen-sm) {
+				margin-right: ~"calc(5% + 18px)" !important;
+				height: 200px;
+			}
+		}
+
+		#jar-tree-container {
+			position: relative;
+			margin-left: 450px;
+
+			@media (max-width: @screen-sm) {
+				margin-left: 0px;
+			}
+
+			#jar-tree {
+				width: 96px;
+
+				@media (max-width: @screen-sm) {
+					width: 48px;
+				}
+			}
+
+			@media (min-width: @screen-sm) {
+				&:after {
+					content: url("../assets/images/tree-text.svg");
+					height: auto;
+					width: 450px;
+					display: inline-block;
+					vertical-align: top;
+				};
+			}
+
+			@media (max-width: @screen-sm) {
+				&:before {
+					content: url("../assets/images/tree-text-mobile.svg");
+					height: auto;
+					width: ~"calc(90% - 48px)";
+					display: inline-block;
+					vertical-align: top;
+				};
+			}			
+		}
+
+		.jam-path-research-mid-2 {
+			margin-top: -180px;
+			height: 150px;
+
+			@media (max-width: @screen-sm) {
+				margin-right: ~"calc(5% + 18px)" !important;
+				height: 200px;
+			}
+		}
+
+		#jar-blossom-container {
+			position: relative;
+			margin-right: 450px;
+
+			@media (max-width: @screen-sm) {
+				margin-right: 0px;
+			}
+
+			#jar-blossom {
+				width: 96px;
+
+				@media (max-width: @screen-sm) {
+					width: 48px;
+				}
+			}
+
+			&:before {
+				content: url("../assets/images/blossom-text.svg");
+				height: auto;
+				width: 450px;
+				display: inline-block;
+				vertical-align: top;
+
+				@media (max-width: @screen-sm) {
+					width: ~"calc(90% - 48px)";
+				}
+			};
+		}
+
+		.jam-path-research-post {
+			margin-top: -180px;
+			height: 185px;
+
+			@media (max-width: @screen-sm) {
+				margin-right: ~"calc(5% + 18px)" !important;
+				height: 200px;
+			}
+		}
+
+		.jar-icon-inner-shade {
+			fill:	#EEEFEF;
+		}
+		.jar-icon-drop-shadow {
+			fill:	#D1D2D3;
+		}
+		.jar-icon-jar {
+			stroke:	#65B2BD;
+			stroke-width:	4;
+			stroke-miterlimit:	10;
+			fill:	none;
+		}
+		.jar-icon-seed {
+			fill:	#837B57;
+		}
+		.jar-icon-grass-green {
+			fill:	#93B15F;
+		}
+		.jar-icon-earth {
+			fill:	#D7CDA3;
+		}
+		.jar-icon-outer-circle {
+			stroke:	#D1DF9D;
+			stroke-width:	4;
+			stroke-miterlimit:	10;
+			fill:	none;
+		}
+
+	}
+
+	.analysis {
+		height: 450px;
+		background-image: url("../assets/images/ventana-working.jpg");
+		background-size: cover;
+		position: relative;
+		padding-top: 100px;
+		margin-top: 30px;
+
+		@media (max-width: @screen-sm) {
+			height: 575px;
+			background-position: center;
+			padding-top: 100px;
+		}
+
+		.analysis-cover-block {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 450px;
+			background-image: url("../assets/images/subtle_dots_trans.png");
+
+			@media (max-width: @screen-sm) {
+				height: 575px;
+			}
+		}
+
+		.analysis-title {
+			padding: 0 20%;
+			h3 {
+				font-weight: 700;
+			}
+		}
+
+		.analysis-content {
+			margin-top: 25px;
+			padding: 0 20%;
+		}
+	}
+
+	.insight {
+		height: 1150px;
+		background-color: @white;
+		position: relative;
+		padding: 75px 10% 0 10%;
+
+		@media (max-width: @screen-sm) {
+			height: 1700px;
+			padding-top: 50px;
+		}
+
+		.insight-grid {
+			margin: 25px 0;
+			min-height: 300px;
+
+			@media (max-width: @screen-sm) {
+				min-height: 0;
+			}
+
+			.insight-title-diamond {
+				margin-top: 25px;
+				display: inline-block;
+				width: 10%;
+			}
+
+			.insight-title {
+				display: inline-block;
+				h4 {
+					font-weight: 700;
+				}
+			}
+
+			.insight-content {
+				padding-left: 10%;
+
+				.insight-content-summary {
+					font-size: @h5 - 1;
+					margin-top: 15px;
+				}
+
+				.insight-content-detail {
+					margin-top: 15px;
+				}
+			}
+
+			img {
+				width: 90%;
+				height: auto;
+				max-height: 280px;
+				float: right;
+
+				@media (max-width: @screen-sm) {
+					width: 100%;
+					float: none;
+				}
+			}
+		}
+	}
+
+	.divider {
+		height: 2px;
+		border-bottom: 1px dashed #cacaca;
+		margin: 0 10%;
+	}
+
+	.insight-result {
+		height: 500px;
+		background-color: @white;
+		position: relative;
+		padding: 50px 10% 0 15%;
+
+		@media (max-width: @screen-sm) {
+			height: 780px;
+		}
+
+		.insight-result-summary {
+			width: 75%;
+			font-size: @h5 - 1;
+			margin-bottom: 50px;
+
+			@media (max-width: @screen-sm) {
+				width: 100%;
+			}
+		}
+
+		.col-sm-4 {
+			padding-left: 0;
+			margin-bottom: 25px;
+		}
+	}
+
+	.design {
+		height: 450px;
+		background-image: url("../assets/images/ventana-working.jpg");
+		background-size: cover;
+		position: relative;
+		padding-top: 100px;
+
+		@media (max-width: @screen-sm) {
+			height: 575px;
+			background-position: center;
+		}
+
+		.design-cover-block {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 450px;
+			background-image: url("../assets/images/subtle_dots_trans.png");
+
+			@media (max-width: @screen-sm) {
+				height: 575px;
+			}
+		}
+
+		.design-title {
+			padding: 0 20%;
+			h3 {
+				font-weight: 700;
+			}
+		}
+
+		.design-content {
+			margin-top: 25px;
+			padding: 0 20%;
+		}
+	}
+}
+
+

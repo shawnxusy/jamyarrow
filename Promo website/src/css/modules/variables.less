@@ -1,0 +1,158 @@
+@base-font-size: 14px;
+@xh: @base-font-size * 3.5;
+@h1: @base-font-size * 3;
+@h2: @base-font-size * 2.5;
+@h3: @base-font-size * 1.8;
+@h4: @base-font-size * 1.5;
+@h5: @base-font-size * 1.333;
+
+@sans-serif: 'Montserrat', 'Lucida Sans Unicode', 'Arial Black', sans-serif;
+@script: 'Niconne', 'Cosmic Sans', 'Georgia', serif;
+@thin-font: 'Merriweather Sans', 'Cosmic Sans', 'Georgia', cursive;
+@fancy-font: 'Arvo', 'Cosmic Sans', 'Georgia', cursive;
+@project-font: 'Raleway', Arial, serif;
+
+
+@screen-sm: 420px;
+@mobile-scale-factor: 0.4;
+
+@background-light-yellow: #f2f1eb;
+
+@main-grey: #72726f;
+@light-grey-30: #828282;
+@light-grey-10: #d3d3cb;
+@light-grey-70: #505050;
+
+@teal: #65b6bf;
+@red: #ee6663;
+@white: #ffffff;
+@grass: #d1df9d;
+@blue: #589ad3;
+@green: #95ce84;
+
+@mago-orange: #FFA11B;
+
+.gradient (@startColor: #eee, @endColor: white) {
+	background-color: @startColor;
+	background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+	background: -webkit-linear-gradient(top, @startColor, @endColor);
+	background: -moz-linear-gradient(top, @startColor, @endColor);
+	background: -ms-linear-gradient(top, @startColor, @endColor);
+	background: -o-linear-gradient(top, @startColor, @endColor);
+}
+
+.center {
+	text-align: center;
+}
+
+.ele-center {
+	margin: 0 auto;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.right-aligned {
+	text-align: right;
+}
+
+.weight-400 {
+	font-weight: 400;
+}
+
+.weight-300 {
+	font-weight: 300;
+}
+
+.link-inherit-color {
+	&:link, &:visited {
+		color: inherit;
+	};
+}
+
+.vertical-center {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.absolute-center {
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.baseline-up {
+	position: relative;
+	top: -9px;
+}
+
+.baseline-up-1 {
+	position: relative;
+	top: -1px;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.script-font {
+	font-family: @script;
+}
+
+.no-mobile {
+	@media (max-width: @screen-sm) {
+		display: none !important;
+	}
+}
+
+.no-desktop {
+	display: none;
+	@media (max-width: @screen-sm) {
+		display: inline-block;
+	}
+}
+
+.larger-1 {
+	font-size: 1.2em;
+}
+
+.larger-2 {
+	font-size: 1.4em;
+}
+
+.larger-3 {
+	font-size: 1.6em;
+}
+
+.blurred-15 {
+	-webkit-filter: blur(10px);
+	-moz-filter: blur(10px);
+	-o-filter: blur(10px);
+	-ms-filter: blur(10px);
+	filter: blur(10px);
+}
+
+.jam-path-teal {
+	width: 6px;
+	background-image: url("../assets/images/jam-path-teal.png");
+	overflow: hidden;
+}
+
+.jam-path-white {
+	width: 6px;
+	background-image: url("../assets/images/jam-path-white.png");
+	overflow: hidden;
+}

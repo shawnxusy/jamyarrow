@@ -1,0 +1,51 @@
+.hero {
+	height: 650px;
+	position: relative;
+	padding: 20px 10% 0 10%;
+	background-image: url("../assets/images/subtle_dots.png");
+	overflow: hidden;
+
+	@media (max-width: @screen-sm) {
+		padding: 20px 5% 0 5%;
+		height: 550px;
+	}
+
+	.hero-logo img {
+		height: 32px;
+	}
+
+	.hero-title {
+		padding: 0 10% 0 10%;
+		margin-top: 200px;
+
+		@media (max-width: @screen-sm) {
+			margin-top: 150px;
+		}
+
+		h3 {
+			line-height: 1.8;
+		}
+	}
+
+	.hero-jar {
+		svg {
+			width: 32px;
+			margin-top: 30px;
+
+			.logo-jar {
+				fill: @teal;
+				stroke: @teal;
+				stroke-width: 3;
+			}
+
+			.logo-yarrow {
+				fill: @red;
+			}
+		}
+	}
+
+	.jam-path-hero {
+		margin-top: 30px;
+		height: 200px;
+	}
+}
