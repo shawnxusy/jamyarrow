@@ -1,0 +1,48 @@
+{% extends "site_base.html" %}
+
+{% block container %}
+<h1> Now tracking: {{ tracked_item.name }}</h1>
+
+<form method="post" action="{% url 'add_track_entry' tracked_item.id %}">
+    <fieldset>
+        <legend>Add item to track</legend>
+
+        {{ add_track_entry_form.errors }}
+
+        <input id="id_patient" name="patient_id" style="display: none" value="{{ patient.id }}">
+
+        {% if tracked_item.severity %}
+          {{ add_track_entry_form.severity.errors }}
+          <label for="{{ add_track_entry_form.severity.id_for_label }}">Severity:</label>
+          {{ add_track_entry_form.severity }}
+        {% endif %}
+
+        {% if tracked_item.duration %}
+          {{ add_track_entry_form.duration.errors }}
+          <label for="{{ add_track_entry_form.duration.id_for_label }}">Duration:</label>
+          {{ add_track_entry_form.duration }}
+        {% endif %}
+
+        {% if tracked_item.quality %}
+          {{ add_track_entry_form.quality.errors }}
+          <label for="{{ add_track_entry_form.quality.id_for_label }}">Quality:</label>
+          {{ add_track_entry_form.quality }}
+        {% endif %}
+
+        {% if tracked_item.quantity %}
+          {{ add_track_entry_form.quantity.errors }}
+          <label for="{{ add_track_entry_form.quantity.id_for_label }}">Quantity:</label>
+          {{ add_track_entry_form.quantity }}
+        {% endif %}
+
+        {% if tracked_item.yes_no %}
+          {{ add_track_entry_form.yes_no.errors }}
+          <label for="{{ add_track_entry_form.yes_no.id_for_label }}">Yes_no:</label>
+          {{ add_track_entry_form.yes_no }}
+        {% endif %}
+
+  <button type="submit">Add entry</button>
+  </fieldset>
+  {% csrf_token %}
+</form>
+{% endblock %}

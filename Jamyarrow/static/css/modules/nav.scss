@@ -1,0 +1,147 @@
+//main: ../styles.scss
+
+.navig {
+    width: $nav-width;
+    min-height: 795px;
+    position: absolute;
+    left: 0;
+    background-color: $white;
+    box-shadow: 2px 0 2px lighten($neutral-grey, 40%);
+    z-index: 100;
+    color: $neutral-grey;
+
+    @media (max-width: $screen-sm) {
+		    width: 0;
+        visibility: hidden;
+        opacity: 0;
+
+        @include transition(0.3s, ease-in-out);
+        &.slide {
+            visibility: visible;
+            opacity: 1;
+            width: 80%;
+        }
+	}
+
+    .logo-grid {
+        height: 70px;
+        background-color: $blue;
+        display: block;
+
+        @media (min-width: $screen-lg) {
+            &:hover {
+                color: $green;
+                &:before {
+                    content: "";
+                    width: 5px;
+                    height: 70px;
+                    background-color: $green;
+                    position: absolute;
+                    left: 0;
+                }
+            }
+        }
+
+        @media (max-width: $screen-sm) {
+            height: 60px;
+        }
+
+        .logo-container {
+            @media (max-width: $screen-sm) {
+                width: 80%;
+                float: left;
+            }
+
+            #rapid-logo {
+                width: 60%;
+                @media (max-width: $screen-sm) {
+            		width: 40%;
+            	}
+            }
+        }
+
+        .nav-fold {
+            height: 70px;
+            width: 20%;
+            background-color: $dark-blue;
+
+            @media (max-width: $screen-sm) {
+                height: 60px;
+            }
+
+            #side-toggle-fold {
+                font-size: $h2;
+            }
+        }
+    }
+
+    .nav-grid {
+        height: $nav-height;
+        display: block;
+        position: relative;
+
+        @media (min-width: $screen-lg) {
+            &:hover {
+                color: $green;
+                &:before {
+                    content: "";
+                    width: 5px;
+                    height: $nav-height;
+                    background-color: $green;
+                    position: absolute;
+                    left: 0;
+                }
+            }
+        }
+
+        @media (max-width: $screen-sm) {
+            height: $nav-height-mobile;
+
+            .nav-icon {
+                float: left;
+                width: 25%;
+                position: relative;
+                text-align: right;
+                margin-top: 15px;
+
+                h3 {
+                    font-size: $h3;
+                }
+            }
+
+            p {
+                text-align: left;
+                width: 65%;
+                margin-left: 10%;
+                font-size: $h5;
+                display: inline-block;
+                margin-top: 15px;
+            }
+        }
+    }
+
+    .logout-grid {
+        background-color: $subtle-grey;
+    }
+}
+
+.nav-hamburger {
+    position: absolute;
+    z-index: 200;
+    left: 15px;
+    top: 15px;
+    width: 46px;
+    height: 46px;
+    @include border-radius(40px);
+    border: 3px solid $white;
+    background-color: $blue;
+
+    &:active {
+        background-color: $green;
+    }
+
+    #side-toggle {
+        font-size: 32px;
+        position: relative;
+    }
+}

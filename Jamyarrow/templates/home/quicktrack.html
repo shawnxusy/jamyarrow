@@ -1,0 +1,71 @@
+{% load app_tags %}
+<form method="post" id="quicktrack-form-{{form_id}}" class="center">
+    <div class="form-legend"><p class="larger-1"><span class="quicktrack-general-question">How was the {{ tracked_item.name  }},</span><span class="capitalized quicktrack-patient-name"> {{ patient.name | firstname }}?</span></p></div>
+    {% if tracked_item.severity %}
+    <div class="quicktrack-form-severity">
+        <input type="radio" class="input-{{ tracked_item.name }}-severity input-severity" name="severity" value="5" id="quicktrack-form-severity-5">
+        <label for="quicktrack-form-severity-5" class="uppercase">None</label>
+
+        <input type="radio" class="input-{{ tracked_item.name }}-severity input-severity" name="severity" value="4" id="quicktrack-form-severity-4">
+        <label for="quicktrack-form-severity-4" class="uppercase">Mild</label>
+
+        <input type="radio" class="input-{{ tracked_item.name }}-severity input-severity" name="severity" value="3" id="quicktrack-form-severity-3">
+        <label for="quicktrack-form-severity-3" class="uppercase">Average</label>
+
+        <input type="radio" class="input-{{ tracked_item.name }}-severity input-severity" name="severity" value="2" id="quicktrack-form-severity-2">
+        <label for="quicktrack-form-severity-2" class="uppercase">Serious</label>
+
+        <input type="radio" class="input-{{ tracked_item.name }}-severity input-severity" name="severity" value="1" id="quicktrack-form-severity-1">
+        <label for="quicktrack-form-severity-1" class="uppercase">Intense</label>
+    </div>
+    {% endif %}
+    {% if tracked_item.duration %}
+    <div class="quicktrack-form-duration">
+        <label for="quicktrack-form-duration">How long was it?</label>
+        <div id="quicktrack-form-duration-display">
+            7 hours
+        </div>
+        <div class="quicktrack-form-duration-content">
+            <span class="quicktrack-form-duration-time-label">5 minutes</span>
+            <input name="duration" class="input-{{ tracked_item.name }}-duration input-duration" type="range" id="quicktrack-form-duration" min="5" max="1440" value="420">
+            <span class="quicktrack-form-duration-time-label">24 hours</span>
+        </div>
+    </div>
+    {% endif %}
+    {% if tracked_item.quality %}
+    <div class="quicktrack-form-quality-label">
+        How was the quality?
+    </div>
+    <div class="quicktrack-form-quality">
+        <input type="radio" class="input-{{ tracked_item.name }}-quality input-quality" name="quality" value="5" id="quicktrack-form-quality-5">
+        <label for="quicktrack-form-quality-5">5</label>
+        <input type="radio" class="input-{{ tracked_item.name }}-quality input-quality" name="quality" value="4" id="quicktrack-form-quality-4">
+        <label for="quicktrack-form-quality-4">4</label>
+        <input type="radio" class="input-{{ tracked_item.name }}-quality input-quality" name="quality" value="3" id="quicktrack-form-quality-3">
+        <label for="quicktrack-form-quality-3">3</label>
+        <input type="radio" class="input-{{ tracked_item.name }}-quality input-quality" name="quality" value="2" id="quicktrack-form-quality-2">
+        <label for="quicktrack-form-quality-2">2</label>
+        <input type="radio" class="input-{{ tracked_item.name }}-quality input-quality" name="quality" value="1" id="quicktrack-form-quality-1">
+        <label for="quicktrack-form-quality-1">1</label>
+    </div>
+    {% endif %}
+    {% if tracked_item.quantity %}
+    <div class="quicktrack-form-quantity">
+        <label for="id_severity">Quantity</label>
+        <input name="quantity" class="input-{{ tracked_item.name }}-quantity input-quantity" placeholder="quantity" type="text">
+    </div>
+    {% endif %}
+    {% if tracked_item.yes_no %}
+    <div class="quicktrack-form-yes-no">
+        <label for="id_yes_no">I took it</label>
+        <input name="yes_no" class="input-{{ tracked_item.name }}-yes-no input-yes-no" placeholder="check" type="checkbox">
+    </div>
+    {% endif %}
+    <div class="quicktrack-form-note">
+        <label for="quicktrack-form-note">Add an optional note</label>
+        <textarea placeholder="" name="note" class="input-note" id="quicktrack-form-note"></textarea>
+    </div>
+    <button type="submit" id="quicktrack-submit-{{form_id}}" class=" quicktrack-submit white">Submit</button>
+    <input type="hidden" value="{{ tracked_item.id }}" class="tracked-item-id">
+    {% csrf_token %}
+</form>

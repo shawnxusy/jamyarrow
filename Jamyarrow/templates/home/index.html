@@ -1,4 +1,6 @@
 {% extends "site_base.html" %}
+{% load staticfiles %}
+{% load app_tags %}
 
 {% block site_title %} {{ block.super }} - Home {% endblock %}
 
@@ -6,7 +8,127 @@
 {% include "_nav.html" %}
 {% endblock %}
 
+
 {% block container %}
-<h1> Here we are </h1>
-<a class="button button-primary" href="{% url 'logout' %}">LOGOUT</a>
+<div class="container">
+    {% block top_nav %}
+    {% endblock %}
+    <div class="hero">
+        <img id="roche-logo" src="{% static 'img/roche-logo.png' %}">
+        <div class="hero-greeting center">
+            <img id="patient-image-hero" src="{% static 'img/profile-jane.png' %}">
+            <div class="hero-greeting-title title-font">
+                <h5 class="capitalized"><b>Good morning, {{ patient.name | firstname }}</b></h5>
+            </div>
+            <div class="hero-greeting-quote">
+                <p>
+                    "The struggle you're in today is developing the strength you need tomorrow."
+                </p>
+                <p class="smaller-1 neutral-grey">
+                    <i>- Anonymous</i>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="notification">
+        <p class="no-underline notification-alert white center"><span class="icon-alerts" id="alerts-icon"></span></p>
+        <div class="active-alerts">
+        </div>
+    </div>
+
+    <div class="content row">
+        <div class="appointments col-sm-10">
+            <table>
+                <tr class="appointments-title">
+                    <td class="appointments-title-icon-grid center">
+                        <h3 class="icon-appointment white vertical-center"></h3>
+                    </td>
+                    <td class="appointments-title-text-grid">
+                        <p class="uppercase vertical-center title-font"><b>Upcoming Appointments</b></p>
+                    </td>
+                </tr>
+                <tr class="appointments-item">
+                    <td class="appointments-item-date appointments-item-time white center">
+                        <h4 class="uppercase light">Jul 15</h4>
+                        <p class="uppercase semi-bold larger-0">2:00 pm</p>
+                    </td>
+                    <td class="appointments-item-content">
+                        <p class="appointments-item-content-event-name semi-bold larger-0">Dr. Lee | Oncologist</p>
+                        <p class="appointments-item-content-event-address">Hillman Cancer Center</p>
+                        <p class="appointments-item-content-event-note">Bring test results</p>
+                    </td>
+                </tr>
+                <tr class="appointments-item">
+                    <td class="appointments-item-time white center">
+                        <p class="uppercase semi-bold larger-0">6:00 pm</p>
+                    </td>
+                    <td class="appointments-item-content">
+                        <p class="appointments-item-content-event-name semi-bold">Dr. Smith | Radiologist</p>
+                        <p class=" appointments-item-content-event-address">Hillman Cancer Center</p>
+                    </td>
+                </tr>
+                <tr class="appointments-item">
+                    <td class="appointments-item-date appointments-item-time white center">
+                        <h4 class="uppercase light">Jul 21</h4>
+                        <p class="uppercase semi-bold larger-0">10:00 am</p>
+                    </td>
+                    <td class="appointments-item-content">
+                        <p class="appointments-item-content-event-name semi-bold">Chemotheraphy Session</p>
+                        <p class="appointments-item-content-event-address">Hillman Cancer Center</p>
+                        <p class="appointments-item-content-event-note">Remember to bring water!</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-1">
+        </div>
+        <div class="quicktrack col-sm-13">
+            <div class="quicktrack-title">
+                <div class="quicktrack-title-head center">
+                    <p class="uppercase white vertical-center title-font"><b>Quick track</b></p>
+                </div>
+                <ul class="nav nav-tabs nav-justified" id="quicktrack-tabs" data-tabs="tabs">
+                    <li role="presentation" class="active" ><a href="#quicktrack-{{ ranked_tracked_items.0.name }}" data-toggle="tab" ><p class="uppercase vertical-center title-font">{{ ranked_tracked_items.0.name }}</p></a></li>
+                    <li role="presentation"><a href="#quicktrack-{{ ranked_tracked_items.1.name }}" data-toggle="tab"><p class="uppercase vertical-center title-font">{{ ranked_tracked_items.1.name }}</p></a></li>
+                    <li role="presentation"><a href="#quicktrack-{{ ranked_tracked_items.2.name }}" data-toggle="tab"><p class="uppercase vertical-center title-font">{{ ranked_tracked_items.2.name }}</p></a></li>
+                </ul>
+                <div class="quicktrack-tabs-content tab-content">
+                    <div class="tab-pane active" id="quicktrack-{{ ranked_tracked_items.0.name }}">
+                        {% include "home/quicktrack.html" with tracked_item=ranked_tracked_items.0 form_id=0%}
+                    </div>
+                    <div class="tab-pane" id="quicktrack-{{ ranked_tracked_items.1.name }}">
+                        {% include "home/quicktrack.html" with tracked_item=ranked_tracked_items.1 form_id=1 %}
+                    </div>
+                    <div class="tab-pane" id="quicktrack-{{ ranked_tracked_items.2.name }}">
+                        {% include "home/quicktrack.html" with tracked_item=ranked_tracked_items.2 form_id=2 %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}
+
+{% block extra_script %}
+    <script type="text/javascript" src="{% static "js/nav.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/homepage.js" %}"></script>
+{% endblock %}
+
+<!-- <h1> Here we are </h1>
+
+Patient name: {{ patient.name }} <br>
+Current tracked items: <br>
+{% for item in current_tracked_items %}
+  <a href={% url 'add_track_entry' item.id %}>{{ item.name }} {{ item.category }}</a> <br>
+{% endfor %}
+<br>
+Add a item to track
+<form method="post" action="{% url 'add_tracked_item' %}">
+  <input name="name" type="text" placeholder="name of the item to track">
+  <button type="submit">Add</button>
+  {% csrf_token %}
+</form>
+
+<a class="button button-primary" href="{% url 'logout' %}">LOGOUT</a> -->

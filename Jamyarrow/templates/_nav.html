@@ -1,1 +1,96 @@
-<h2> Nav here </h2>
+{% load staticfiles %}
+<div class="nav-hamburger no-desktop white center">
+    <p id="side-toggle" class="no-underline"><b><span class="icon-timeline" id="hamburger-icon"></span></b></p>
+</div>
+<div class="navig">
+    <a href="{% url 'homepage' %}" class="no-underline center logo-grid">
+        <div class="nav-grid-content vertical-center logo-container">
+            <img src="{% static 'img/rapid-logo.png' %}" id="rapid-logo">
+        </div>
+        <div class="nav-fold no-desktop">
+            <p id="side-toggle-fold" class="no-underline icon-timeline vertical-center white"></p>
+        </div>
+    </a>
+
+    <a href="{% url 'homepage' %}" class="no-underline nav-grid center">
+        <div class="nav-grid-content vertical-center">
+            <div class="nav-icon">
+                <h3><span class="icon-account"></span></h3>
+            </div>
+            <p class="uppercase smaller-1 semi-bold">My account</p>
+        </div>
+    </a>
+
+    <a href="{% url 'homepage' %}" class="no-underline nav-grid center">
+        <div class="nav-grid-content vertical-center">
+            <div class="nav-icon">
+                <h3><span class="icon-timeline"></span></h3>
+            </div>
+            <p class="uppercase smaller-1 semi-bold">Timeline</p>
+        </div>
+    </a>
+
+    <a href="{% url 'homepage' %}" class="no-underline nav-grid center">
+        <div class="nav-grid-content vertical-center">
+            <div class="nav-icon">
+                <h3><span class="icon-tracker"></span></h3>
+            </div>
+            <p class="uppercase smaller-1 semi-bold">My tracker</p>
+        </div>
+    </a>
+
+    <a href="{% url 'homepage' %}" class="no-underline nav-grid center">
+        <div class="nav-grid-content vertical-center">
+            <div class="nav-icon">
+                <h3><span class="icon-match"></span></h3>
+            </div>
+            <p class="uppercase smaller-1 semi-bold">Patient match</p>
+        </div>
+    </a>
+
+    <a href="{% url 'homepage' %}" class="no-underline nav-grid center">
+        <div class="nav-grid-content vertical-center">
+            <div class="nav-icon">
+                <h3><span class="icon-calendar"></span></h3>
+            </div>
+            <p class="uppercase smaller-1 semi-bold">Calendar</p>
+        </div>
+    </a>
+
+    <a href="{% url 'homepage' %}" class="no-underline nav-grid center">
+        <div class="nav-grid-content vertical-center">
+            <div class="nav-icon">
+                <h3><span class="icon-contacts"></span></h3>
+            </div>
+            <p class="uppercase smaller-1 semi-bold">Contacts</p>
+        </div>
+    </a>
+
+    <a href="{% url 'homepage' %}" class="no-underline nav-grid center">
+        <div class="nav-grid-content vertical-center">
+            <div class="nav-icon">
+                <h3><span class="icon-records"></span></h3>
+            </div>
+            <p class="uppercase smaller-1 semi-bold">My records</p>
+        </div>
+    </a>
+
+    <a href="{% url 'homepage' %}" class="no-underline nav-grid center">
+        <div class="nav-grid-content vertical-center">
+            <div class="nav-icon">
+                <h3><span class="icon-resources"></span></h3>
+            </div>
+            <p class="uppercase smaller-1 semi-bold">Resources</p>
+        </div>
+    </a>
+
+    <a href="{% url 'homepage' %}" class="no-underline nav-grid logout-grid center">
+        <div class="nav-grid-content vertical-center">
+            <div class="nav-icon">
+                <h3><span class="icon-logout"></span></h3>
+            </div>
+            <p class="uppercase smaller-1 semi-bold">Log out</p>
+        </div>
+    </a>
+
+</div>

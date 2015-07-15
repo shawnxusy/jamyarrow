@@ -1,0 +1,184 @@
+//main: ../styles.scss
+$base-font-size: 14px;
+$h1: $base-font-size * 3;
+$h2: $base-font-size * 2.5;
+$h3: $base-font-size * 2;
+$h4: $base-font-size * 1.5;
+$h5: $base-font-size * 1.333;
+
+$main-font: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
+$title-font: 'Sintony', 'Helvetica', Arial, sans-serif;
+
+$screen-sm: 420px;
+$screen-lg: 768px;
+$mobile-scale-factor: 0.4;
+
+$white: #ffffff;
+$neutral-grey: #696969;
+$subtle-grey: #ededed;
+$background-grey: #f9fafb;
+$divider-grey: #ced0cd;
+
+$blue: #2e97de;
+$dark-blue: #298acc;
+$darker-blue: #105989;
+$green: #65bc6c;
+$dark-green: #58ac5f;
+$grass-green: #abd25e;
+
+$measure-green: #45de4f;
+$measure-lightgreen: #d2f20d;
+$measure-yellow: #f5e83b;
+$measure-orange: #f6b23e;
+$measure-red: #f66f2c;
+
+$nav-width: 120px;
+$nav-height: 80px;
+$nav-height-mobile: 60px;
+
+.title-font {
+	font-family: $title-font;
+}
+
+.center {
+	text-align: center;
+}
+
+.right-aligned {
+	text-align: right;
+}
+
+.normal {
+	font-weight: 400;
+}
+
+.light {
+	font-weight: 300;
+}
+
+.semi-bold {
+	font-weight: 600;
+}
+
+.link-inherit-color {
+	&:link, &:visited {
+		color: inherit;
+	};
+}
+
+.vertical-center {
+	position: relative;
+	top: 50%;
+	@include transform(translateY(-50%));
+}
+
+.absolute-center {
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.no-mobile {
+	@media (max-width: $screen-sm) {
+		display: none !important;
+	}
+}
+
+.no-desktop {
+	display: none;
+	@media (max-width: $screen-sm) {
+		display: inline-block;
+	}
+}
+
+.larger-0 {
+	font-size: 1.1em;
+}
+
+.larger-1 {
+	font-size: 1.2em;
+}
+
+.larger-2 {
+	font-size: 1.4em;
+}
+
+.larger-3 {
+	font-size: 1.6em;
+}
+
+.smaller-1 {
+	font-size: 0.9em;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.no-underline {
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.capitalized {
+	text-transform: capitalize;
+}
+
+$track-color: lighten($subtle-grey, 3%);
+$thumb-color: $divider-grey;
+
+$thumb-radius: 4px;
+$thumb-height: 25px;
+$thumb-width: 17px;
+$thumb-shadow-size: 1px;
+$thumb-shadow-blur: 1px;
+$thumb-shadow-color: #e8e8e8;
+$thumb-border-width: 1px;
+$thumb-border-color: white;
+
+$track-width: 100%;
+$track-height: 10px;
+$track-shadow-size: 2px;
+$track-shadow-blur: 2px;
+$track-shadow-color: #222;
+$track-border-width: 1px;
+$track-border-color: lighten($divider-grey, 10%);
+
+$track-radius: 5px;
+$contrast: 5%;
+
+@mixin shadow($shadow-size,$shadow-blur,$shadow-color) {
+  box-shadow: $shadow-size $shadow-size $shadow-blur $shadow-color, 0px 0px $shadow-size lighten($shadow-color,5%);
+}
+
+@mixin track() {
+  width: $track-width;
+  height: $track-height;
+  cursor: pointer;
+  animate: 0.2s;
+}
+
+@mixin thumb() {
+  border: $thumb-border-width solid lighten($divider-grey, 10%);
+  height: $thumb-height;
+  width: $thumb-width;
+  border-radius: $thumb-radius;
+  background: $thumb-color;
+  cursor: pointer;
+}

@@ -25,13 +25,22 @@ def signup(request):
 
 		new_user.save()
 
-		# Mark the mealuser as inactive
 		new_patient = Patient(user=new_user,
 							name=user_signup_form.cleaned_data['name'],
 							phone=user_signup_form.cleaned_data['phone'],
 							cancer_type=user_signup_form.cleaned_data['cancer_type'],
 							cancer_stage=user_signup_form.cleaned_data['cancer_stage'])
 		new_patient.save()
+
+		# Add some default tracking for patient
+		sleep = TrackedItem(patient=new_patient, name="sleep", category="SL", severity=False, duration=True, quality=True, yes_no=False, goal=8)
+		sleep.save()
+
+		mood = TrackedItem(patient=new_patient, name="mood", category="MD", severity=False, duration=False, quality=True, yes_no=False, goal=0)
+		mood.save()
+
+		exercise = TrackedItem(patient=new_patient, name="exercise", category="AT", severity=False, duration=True, quality=False, yes_no=False, goal=60)
+		exercise.save()
 
 		new_user.backend = 'django.contrib.auth.backends.ModelBackend'
 		login(request, new_user)

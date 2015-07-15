@@ -1,0 +1,23 @@
+{% extends "site_base.html" %}
+
+{% block container %}
+<h1> Adding a item to track </h1>
+
+<form method="post" action="{% url 'add_tracked_item' %}">
+    <fieldset>
+        <legend>Add item to track</legend>
+
+        {{ add_tracked_item_form.errors }}
+
+        {% for field in add_tracked_item_form.visible_fields %}
+        {{ field.errors }}
+        {{ field.label_tag }}
+        {{ field }}
+        {% endfor %}
+        
+        <button type="submit">Add category</button>
+    </fieldset>
+    {% csrf_token %}
+</form>
+
+{% endblock %}

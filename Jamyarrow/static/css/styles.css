@@ -1,0 +1,733 @@
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+  Mixins available:
+    -   css3-prefix             - arguments: Property, Value
+    -   background-gradient     - arguments: Start Color: #3C3C3C, End Color: #999999
+    -   background-horizontal   - arguments: Start Color: #3C3C3C, End Color: #999999
+    -   background-radial       - arguments: Start Color: #FFFFFF, Start position: 0%, End Color: #000000, End position: 100%
+    -   background-size         - arguments: Width: 100%, Height: 100%
+    -   background-opacity      - arguments: Color: #000, Opacity: .85
+    -   border-radius           - arguments: Radius: 5px
+    -   border-radius-separate  - arguments: Top Left: 5px, Top Right: 5px, Bottom Left: 5px, Bottom Right: 5px
+    -   box                     - arguments: Orientation: horizontal, Pack: center, Align: center
+    -   box-rgba                - arguments: R: 60, G: 3, B: 12, Opacity: 0.23, Color: #3C3C3C
+    -   box-shadow              - arguments: X: 2px, Y: 2px, Blur: 5px, Color: rgba(0,0,0,.4)
+    -   box-sizing              - arguments: Type: border-box
+    -   columns                 - arguments: Count: 3, Gap: 10
+    -   double-borders          - arguments: Color One: #3C3C3C, Color Two: #999999, Radius: 0
+    -   flex                    - arguments: Value: 1
+    -   flip                    - arguments: ScaleX: -1
+    -   font-face               - arguments: Font Family: myFont, Eot File Src: myFont.eot, Woff File Src: myFont.woff, Ttf File Src: myFont.ttf
+    -   opacity                 - arguments: Opacity: 0.5
+    -   outline radius          - arguments: Radius: 5px
+    -   resize                  - arguments: Direction: both
+    -   rotate                  - arguments: Degree: 0, M11: 0, M12: 0, M21: 0, M22: 0
+    CSS Matrix Rotation Calculator http://www.boogdesign.com/examples/transforms/matrix-calculator.html
+    -   text-shadow             - arguments: X: 2px, Y: 2px, Blur: 5px, Color: rgba(0,0,0,.4)
+    -   transform               - arguments: Parameters: null
+    -   transform-style         - arguments: Style: preserve-3d
+    -   transition              - Default arguments: What: all, Length: 1s, Easing: ease-in-out
+    -                            - Examples: @include transition (all 2s ease-in-out);
+    -                                        @include transition (opacity 1s ease-in 2s, width 2s ease-out);
+    -   triple-borders          - arguments: Color One: #3C3C3C, Color Two: #999999, Color Three: #000000, Radius: 0
+    -   keyframes               - arguments: Animation name
+                                - content:   Animation css
+    -   animation               - arguments: name duration timing-function delay iteration-count direction fill-mode play-state
+                                             (http://www.w3schools.com/cssref/css3_pr_animation.asp)
+
+------------------------------------------------------------- */
+.title-font {
+  font-family: "Sintony", "Helvetica", Arial, sans-serif; }
+
+.center {
+  text-align: center; }
+
+.right-aligned {
+  text-align: right; }
+
+.normal {
+  font-weight: 400; }
+
+.light {
+  font-weight: 300; }
+
+.semi-bold {
+  font-weight: 600; }
+
+.link-inherit-color:link, .link-inherit-color:visited {
+  color: inherit; }
+
+.vertical-center {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -khtml-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.absolute-center {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0; }
+
+.no-margin {
+  margin: 0; }
+
+.float-left {
+  float: left; }
+
+.float-right {
+  float: right; }
+
+@media (max-width: 420px) {
+  .no-mobile {
+    display: none !important; } }
+
+.no-desktop {
+  display: none; }
+  @media (max-width: 420px) {
+    .no-desktop {
+      display: inline-block; } }
+
+.larger-0 {
+  font-size: 1.1em; }
+
+.larger-1 {
+  font-size: 1.2em; }
+
+.larger-2 {
+  font-size: 1.4em; }
+
+.larger-3 {
+  font-size: 1.6em; }
+
+.smaller-1 {
+  font-size: 0.9em; }
+
+.uppercase {
+  text-transform: uppercase; }
+
+.no-underline:hover {
+  text-decoration: none; }
+
+.capitalized {
+  text-transform: capitalize; }
+
+html, body {
+  font-size: 14px;
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+  background-color: #ffffff;
+  overflow-x: hidden; }
+
+a {
+  color: inherit; }
+
+h1, .h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0; }
+
+h2, .h2 {
+  font-size: 35px;
+  font-weight: 700;
+  margin: 0; }
+
+h3, .h3 {
+  font-size: 28px;
+  margin: 0; }
+
+h4, .h4 {
+  font-size: 21px;
+  margin: 0; }
+
+h5, .h5 {
+  font-size: 18.662px;
+  margin: 0; }
+
+@media (max-width: 420px) {
+  html, body {
+    font-size: 11.2px; }
+  h1, .h1 {
+    font-size: 25.2px; }
+  h2, .h2 {
+    font-size: 21px; }
+  h3, .h3 {
+    font-size: 16.8px; }
+  h4, .h4 {
+    font-size: 12.6px; }
+  h5, .h5 {
+    font-size: 11.1972px; } }
+
+.title, .subtitle {
+  text-align: center; }
+
+.white {
+  color: #ffffff; }
+
+.blue {
+  color: #2e97de; }
+
+.dark-blue {
+  color: #298acc; }
+
+.darker-blue {
+  color: #105989; }
+
+.green {
+  color: #65bc6c; }
+
+.dark-green {
+  color: #58ac5f; }
+
+.grass-green {
+  color: #abd25e; }
+
+.neutral-grey {
+  color: #696969; }
+
+.subtle-grey {
+  color: #ededed; }
+
+.navig {
+  width: 120px;
+  min-height: 795px;
+  position: absolute;
+  left: 0;
+  background-color: #ffffff;
+  box-shadow: 2px 0 2px #cfcfcf;
+  z-index: 100;
+  color: #696969; }
+  @media (max-width: 420px) {
+    .navig {
+      width: 0;
+      visibility: hidden;
+      opacity: 0;
+      -webkit-transition: 0.3s, ease-in-out;
+      -khtml-transition: 0.3s, ease-in-out;
+      -moz-transition: 0.3s, ease-in-out;
+      -ms-transition: 0.3s, ease-in-out;
+      -o-transition: 0.3s, ease-in-out;
+      transition: 0.3s, ease-in-out; }
+      .navig.slide {
+        visibility: visible;
+        opacity: 1;
+        width: 80%; } }
+  .navig .logo-grid {
+    height: 70px;
+    background-color: #2e97de;
+    display: block; }
+    @media (min-width: 768px) {
+      .navig .logo-grid:hover {
+        color: #65bc6c; }
+        .navig .logo-grid:hover:before {
+          content: "";
+          width: 5px;
+          height: 70px;
+          background-color: #65bc6c;
+          position: absolute;
+          left: 0; } }
+    @media (max-width: 420px) {
+      .navig .logo-grid {
+        height: 60px; } }
+    @media (max-width: 420px) {
+      .navig .logo-grid .logo-container {
+        width: 80%;
+        float: left; } }
+    .navig .logo-grid .logo-container #rapid-logo {
+      width: 60%; }
+      @media (max-width: 420px) {
+        .navig .logo-grid .logo-container #rapid-logo {
+          width: 40%; } }
+    .navig .logo-grid .nav-fold {
+      height: 70px;
+      width: 20%;
+      background-color: #298acc; }
+      @media (max-width: 420px) {
+        .navig .logo-grid .nav-fold {
+          height: 60px; } }
+      .navig .logo-grid .nav-fold #side-toggle-fold {
+        font-size: 35px; }
+  .navig .nav-grid {
+    height: 80px;
+    display: block;
+    position: relative; }
+    @media (min-width: 768px) {
+      .navig .nav-grid:hover {
+        color: #65bc6c; }
+        .navig .nav-grid:hover:before {
+          content: "";
+          width: 5px;
+          height: 80px;
+          background-color: #65bc6c;
+          position: absolute;
+          left: 0; } }
+    @media (max-width: 420px) {
+      .navig .nav-grid {
+        height: 60px; }
+        .navig .nav-grid .nav-icon {
+          float: left;
+          width: 25%;
+          position: relative;
+          text-align: right;
+          margin-top: 15px; }
+          .navig .nav-grid .nav-icon h3 {
+            font-size: 28px; }
+        .navig .nav-grid p {
+          text-align: left;
+          width: 65%;
+          margin-left: 10%;
+          font-size: 18.662px;
+          display: inline-block;
+          margin-top: 15px; } }
+  .navig .logout-grid {
+    background-color: #ededed; }
+
+.nav-hamburger {
+  position: absolute;
+  z-index: 200;
+  left: 15px;
+  top: 15px;
+  width: 46px;
+  height: 46px;
+  -webkit-border-radius: 40px;
+  -khtml-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
+  border-radius: 40px;
+  border: 3px solid #ffffff;
+  background-color: #2e97de; }
+  .nav-hamburger:active {
+    background-color: #65bc6c; }
+  .nav-hamburger #side-toggle {
+    font-size: 32px;
+    position: relative; }
+
+.container {
+  width: -webkit-calc(100% - 120px);
+  width: calc(100% - 120px);
+  position: absolute;
+  left: 120px;
+  background-color: #f9fafb;
+  min-height: 795px;
+  padding: 0; }
+  @media (max-width: 420px) {
+    .container {
+      width: 100%;
+      left: 0; } }
+  .container .hero {
+    height: 300px;
+    background-color: #65bc6c;
+    background-image: url("../img/profile_bkg.png");
+    background-size: cover;
+    background-position: bottom; }
+    @media (max-width: 420px) {
+      .container .hero {
+        height: 450px;
+        text-align: center; } }
+    .container .hero #roche-logo {
+      max-width: 60px;
+      height: auto;
+      margin-left: 80px;
+      margin-top: 20px; }
+      @media (max-width: 420px) {
+        .container .hero #roche-logo {
+          margin: 25px 0 0 0; } }
+    .container .hero .hero-greeting {
+      margin-top: -10px;
+      width: 30%;
+      margin: 0 auto; }
+      @media (max-width: 420px) {
+        .container .hero .hero-greeting {
+          margin-top: 30px;
+          width: 100%; } }
+      .container .hero .hero-greeting #patient-image-hero {
+        width: 30%;
+        min-width: 100px;
+        height: auto; }
+        @media (max-width: 420px) {
+          .container .hero .hero-greeting #patient-image-hero {
+            width: 40%;
+            max-width: 128px; } }
+      .container .hero .hero-greeting .hero-greeting-title {
+        margin-top: 10px; }
+        @media (max-width: 420px) {
+          .container .hero .hero-greeting .hero-greeting-title h5 {
+            font-size: 2em; } }
+      .container .hero .hero-greeting .hero-greeting-quote {
+        font-size: 1.05em;
+        margin-top: 10px; }
+        @media (max-width: 420px) {
+          .container .hero .hero-greeting .hero-greeting-quote {
+            margin: 40px 20px 0 20px;
+            font-size: 1.5em; } }
+  .container .notification {
+    position: absolute;
+    z-index: 200;
+    top: 20px;
+    right: 80px; }
+    @media (max-width: 420px) {
+      .container .notification {
+        right: 15px;
+        top: 15px; } }
+    .container .notification .notification-alert {
+      width: 40px;
+      height: 40px;
+      -webkit-border-radius: 40px;
+      -khtml-border-radius: 40px;
+      -moz-border-radius: 40px;
+      -ms-border-radius: 40px;
+      -o-border-radius: 40px;
+      border-radius: 40px;
+      border: 3px solid #ffffff;
+      background-color: #2e97de; }
+      @media (max-width: 420px) {
+        .container .notification .notification-alert {
+          width: 46px;
+          height: 46px; } }
+      .container .notification .notification-alert #alerts-icon {
+        font-size: 20px;
+        position: relative;
+        top: 6px; }
+        @media (max-width: 420px) {
+          .container .notification .notification-alert #alerts-icon {
+            font-size: 26px; } }
+  .container .content {
+    margin: 30px 4% 0 4%; }
+    @media (max-width: 420px) {
+      .container .content {
+        margin: 20px 3% 0 3%; } }
+    .container .content .appointments {
+      background-color: #ffffff;
+      border: 1px solid #ededed;
+      padding: 0;
+      display: block; }
+      .container .content .appointments table {
+        width: 100%; }
+        .container .content .appointments table .appointments-title .appointments-title-icon-grid {
+          background-color: #58ac5f;
+          height: 60px;
+          width: 26%; }
+        .container .content .appointments table .appointments-title .appointments-title-text-grid {
+          height: 60px;
+          padding-left: 20px; }
+          .container .content .appointments table .appointments-title .appointments-title-text-grid p {
+            font-size: 1.15em; }
+        .container .content .appointments table .appointments-item .appointments-item-time {
+          background-color: #65bc6c;
+          width: 26%;
+          padding: 5px 5px 0 5px; }
+          .container .content .appointments table .appointments-item .appointments-item-time p {
+            margin: 0; }
+        .container .content .appointments table .appointments-item .appointments-item-date {
+          border-top: 1px solid #58ac5f; }
+        .container .content .appointments table .appointments-item .appointments-item-content {
+          padding: 10px 10px 10px 20px;
+          border-top: 1px solid #ededed; }
+          .container .content .appointments table .appointments-item .appointments-item-content p {
+            margin: 0; }
+        @media (max-width: 420px) {
+          .container .content .appointments table table, .container .content .appointments table tbody, .container .content .appointments table th, .container .content .appointments table td, .container .content .appointments table tr {
+            display: block; }
+          .container .content .appointments table td {
+            position: relative;
+            padding-left: 50%; }
+          .container .content .appointments table .appointments-title .appointments-title-icon-grid {
+            display: none; }
+          .container .content .appointments table .appointments-title .appointments-title-text-grid {
+            background-color: #58ac5f;
+            color: #ffffff;
+            text-align: center; }
+            .container .content .appointments table .appointments-title .appointments-title-text-grid p {
+              font-size: 1.4em; }
+              .container .content .appointments table .appointments-title .appointments-title-text-grid p:before {
+                content: "\e602";
+                font-size: 16px;
+                margin-right: 5px;
+                font-family: 'icomoon';
+                speak: none;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1; }
+          .container .content .appointments table .appointments-item:first-child .appointments-item-date {
+            border-top: none; }
+          .container .content .appointments table .appointments-item .appointments-item-time {
+            text-align: left;
+            background-color: #f0f2f5;
+            color: #696969;
+            padding: 5px 10px;
+            width: 100%; }
+            .container .content .appointments table .appointments-item .appointments-item-time p {
+              font-size: 1.5em;
+              margin-left: 30%; }
+          .container .content .appointments table .appointments-item .appointments-item-date {
+            border-top: none; }
+            .container .content .appointments table .appointments-item .appointments-item-date h4 {
+              float: left;
+              margin: 3px 0 0 7%;
+              font-size: 1.5em;
+              font-weight: 600; }
+          .container .content .appointments table .appointments-item .appointments-item-content {
+            padding: 10px; }
+            .container .content .appointments table .appointments-item .appointments-item-content .appointments-item-content-event-name:before {
+              content: "Event"; }
+            .container .content .appointments table .appointments-item .appointments-item-content .appointments-item-content-event-address:before {
+              content: "Address"; }
+            .container .content .appointments table .appointments-item .appointments-item-content .appointments-item-content-event-note:before {
+              content: "Note"; }
+            .container .content .appointments table .appointments-item .appointments-item-content p {
+              font-size: 1.3em;
+              margin-left: 30%; }
+              .container .content .appointments table .appointments-item .appointments-item-content p:before {
+                position: absolute;
+                /* Top/left values mimic padding */
+                left: 10%;
+                font-weight: 300;
+                text-align: left;
+                width: 35%;
+                padding-right: 10px;
+                white-space: nowrap; } }
+    .container .content .quicktrack {
+      background-color: #ffffff;
+      border: 1px solid #ededed;
+      padding: 0;
+      display: block; }
+      .container .content .quicktrack .quicktrack-title-head {
+        background-color: #298acc;
+        height: 60px;
+        float: left;
+        width: 34%; }
+        .container .content .quicktrack .quicktrack-title-head p {
+          font-size: 1.15em; }
+      .container .content .quicktrack #quicktrack-tabs li a {
+        height: 60px;
+        font-size: 1.15em;
+        background-color: #2e97de;
+        color: #105989;
+        border: none;
+        border-radius: inherit; }
+      .container .content .quicktrack #quicktrack-tabs li.active a {
+        color: white; }
+        .container .content .quicktrack #quicktrack-tabs li.active a:after {
+          content: "";
+          width: 0;
+          height: 0;
+          left: 50%;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-bottom: 10px solid #ffffff;
+          margin-left: -10px;
+          position: absolute;
+          bottom: 0; }
+      .container .content .quicktrack .quicktrack-tabs-content .form-legend {
+        margin-top: 20px; }
+      .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality-label {
+        margin: 20px 0 -10px 0; }
+      .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality {
+        margin-top: 20px; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity .radio-button-left-circle, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality .radio-button-left-circle {
+          display: none; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity .radio-button-right-circle, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality .radio-button-right-circle {
+          display: none; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label {
+          display: inline-block;
+          cursor: pointer;
+          position: relative;
+          padding: 5px 15px;
+          margin: 0 5px;
+          font-size: 0.85em;
+          font-weight: bold;
+          background-color: whitesmoke;
+          -webkit-border-radius: 25px;
+          -khtml-border-radius: 25px;
+          -moz-border-radius: 25px;
+          -ms-border-radius: 25px;
+          -o-border-radius: 25px;
+          border-radius: 25px; }
+          .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin-right: 5px;
+            background-color: #ffffff;
+            bottom: 16px;
+            border-radius: 5px; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(2):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(1):checked + label, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(2):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(1):checked + label {
+          background-color: #45de4f;
+          color: #ffffff; }
+          .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(2):hover:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(1):checked + label:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(2):hover:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(1):checked + label:before {
+            background-color: #ffffff; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(2):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(2):hover {
+          background-color: #24cc2f; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(2):before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(2):before {
+          background-color: #45de4f; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(4):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(3):checked + label, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(4):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(3):checked + label {
+          background-color: #d2f20d;
+          color: #ffffff; }
+          .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(4):hover:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(3):checked + label:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(4):hover:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(3):checked + label:before {
+            background-color: #ffffff; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(4):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(4):hover {
+          background-color: #bdda0c; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(4):before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(4):before {
+          background-color: #d2f20d; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(6):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(5):checked + label, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(6):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(5):checked + label {
+          background-color: #f5e83b;
+          color: #ffffff; }
+          .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(6):hover:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(5):checked + label:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(6):hover:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(5):checked + label:before {
+            background-color: #ffffff; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(6):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(6):hover {
+          background-color: #f1e10c; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(6):before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(6):before {
+          background-color: #f5e83b; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(8):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(7):checked + label, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(8):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(7):checked + label {
+          background-color: #f6b23e;
+          color: #ffffff; }
+          .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(8):hover:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(7):checked + label:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(8):hover:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(7):checked + label:before {
+            background-color: #ffffff; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(8):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(8):hover {
+          background-color: #f49f0d; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(8):before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(8):before {
+          background-color: #f6b23e; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(10):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(9):checked + label, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(10):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(9):checked + label {
+          background-color: #f66f2c;
+          color: #ffffff; }
+          .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(10):hover:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(9):checked + label:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(10):hover:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(9):checked + label:before {
+            background-color: #ffffff; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(10):hover, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(10):hover {
+          background-color: #e5530a; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(10):before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(10):before {
+          background-color: #f66f2c; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:hover:before, .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:hover:before {
+          background-color: #ffffff; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio], .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio] {
+          display: none; }
+      .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration {
+        margin-top: 20px; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration label {
+          font-weight: normal; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration #quicktrack-form-duration-display {
+          display: inline;
+          margin-left: 20px;
+          background-color: whitesmoke;
+          padding: 5px 10px;
+          color: #696969; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content {
+          margin-top: 10px; }
+          .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content .quicktrack-form-duration-time-label {
+            position: relative;
+            bottom: 1px; }
+          .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content #quicktrack-form-duration {
+            display: inline-block;
+            width: 60%;
+            margin: 0 5%;
+            bottom: 2px; }
+          .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range] {
+            -webkit-appearance: none; }
+            .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]:focus {
+              outline: none; }
+            .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]::-webkit-slider-runnable-track {
+              width: 100%;
+              height: 10px;
+              cursor: pointer;
+              animate: 0.2s;
+              background: whitesmoke;
+              border-radius: 5px;
+              border: 1px solid #e8e9e7; }
+            .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]::-webkit-slider-thumb {
+              border: 1px solid #e8e9e7;
+              height: 25px;
+              width: 17px;
+              border-radius: 4px;
+              background: #ced0cd;
+              cursor: pointer;
+              -webkit-appearance: none;
+              margin-top: -8.5px; }
+            .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]:focus::-webkit-slider-runnable-track {
+              background: white; }
+            .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]::-moz-range-track {
+              width: 100%;
+              height: 10px;
+              cursor: pointer;
+              animate: 0.2s;
+              background: whitesmoke;
+              border-radius: 5px;
+              border: 1px solid #e8e9e7; }
+            .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]::-moz-range-thumb {
+              border: 1px solid #e8e9e7;
+              height: 25px;
+              width: 17px;
+              border-radius: 4px;
+              background: #ced0cd;
+              cursor: pointer; }
+            .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]::-ms-track {
+              width: 100%;
+              height: 10px;
+              cursor: pointer;
+              animate: 0.2s;
+              background: transparent;
+              border-color: transparent;
+              border-width: 17px 0;
+              color: transparent; }
+            .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]::-ms-fill-lower {
+              background: #e8e8e8;
+              border: 1px solid #e8e9e7;
+              border-radius: 10px; }
+            .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]::-ms-fill-upper {
+              background: whitesmoke;
+              border: 1px solid #e8e9e7;
+              border-radius: 10px; }
+            .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]::-ms-thumb {
+              border: 1px solid #e8e9e7;
+              height: 25px;
+              width: 17px;
+              border-radius: 4px;
+              background: #ced0cd;
+              cursor: pointer; }
+            .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]:focus::-ms-fill-lower {
+              background: whitesmoke; }
+            .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]:focus::-ms-fill-upper {
+              background: white; }
+      .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-note {
+        margin-top: 20px; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-note label {
+          font-weight: normal; }
+        .container .content .quicktrack .quicktrack-tabs-content .quicktrack-form-note #quicktrack-form-note {
+          display: block;
+          width: 60%;
+          margin: 0 auto;
+          border: 1px solid #ced0cd;
+          min-height: 80px; }
+      .container .content .quicktrack .quicktrack-tabs-content .quicktrack-submit {
+        padding: 10px 40px;
+        background-color: #2e97de;
+        border: none;
+        margin: 20px 0 15px 0;
+        -webkit-border-radius: 5px;
+        -khtml-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+        border-radius: 5px; }
+      .container .content .quicktrack .quicktrack-tabs-content #quicktrack-mood form .form-legend p .quicktrack-general-question {
+        display: none; }
+      .container .content .quicktrack .quicktrack-tabs-content #quicktrack-mood form .form-legend p:before {
+        content: "How are you feeling,";
+        font-style: italic; }
