@@ -1,0 +1,570 @@
+.cant-select{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/*********************************
+    Document Viewer Markup
+*********************************/
+.document-viewer-wrapper{
+    display:inline-block;
+    font-family:sans-serif;
+
+    float:right;
+    position:relative;
+    box-sizing: border-box;
+
+    position:relative;
+    background:#fff;
+    border:1px solid #dadada;
+    box-shadow:0 0 4px rgba(0, 0, 0, .07);
+
+    *{
+        box-sizing: border-box;
+    }
+
+    *:before{
+        box-sizing: inherit;
+    }
+
+    *:after {
+        box-sizing: inherit;
+    }
+}
+
+.document-viewer-outer{
+
+}
+
+.txt .document-viewer-outer{
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+.document-viewer{
+    padding:10px 20px;
+
+
+    min-height:100%;
+
+
+    .clearfix;
+
+
+
+
+    pre, pre.prettyprint{
+        padding:none;
+        border:none;
+        font-size:11px;
+        line-height:21px;
+        
+    }
+}
+
+.document-viewer-empty-text{
+    padding:20px 0;
+    text-align:center;
+}
+
+
+
+.dv-error{
+    padding:10px;
+    padding:10px;
+    text-align:center;
+    margin:20px auto;
+    font-size:14px;
+    color:#fff;
+    background: #D87777;
+    background: -moz-linear-gradient(top, rgba(216, 119, 119, 1) 1%, rgba(217, 87, 87, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, rgba(216, 119, 119, 1)), color-stop(100%, rgba(217, 87, 87, 1)));
+    background: -webkit-linear-gradient(top, rgba(216, 119, 119, 1) 1%, rgba(217, 87, 87, 1) 100%);
+    background: -o-linear-gradient(top, rgba(216, 119, 119, 1) 1%, rgba(217, 87, 87, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(216, 119, 119, 1) 1%, rgba(217, 87, 87, 1) 100%);
+    filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr = '#d87777', endColorstr = '#d95757', GradientType = 0)";
+    background: linear-gradient(top, rgba(216, 119, 119, 1) 1%, rgba(217, 87, 87, 1) 100%);
+    border: 1px solid #B72224;
+
+    span{
+        display: block;
+        margin-top: 5px;
+        color: #EEE;
+        font-size: 11px;
+    }
+}
+
+.dv-loading{
+    height:32px;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:transparent url(../images/loading.gif) no-repeat center center;
+}
+
+
+/*********************************
+    Audio/Video Player
+*********************************/
+
+.ttw-video-player {
+    margin: 0 auto;
+    padding:10px 0;
+    position: relative;
+}
+
+.ttw-video-player .player {
+
+
+}
+
+/* This is where the video shows up */
+.ttw-video-player .jPlayer-container {
+    background: #000;
+    width: 554px;
+    height: 312px;
+}
+
+/* THis is the video poster */
+
+.ttw-video-player{
+    .jPlayer-container img{
+        display:none !important;
+    }
+
+    .player-controls {
+        background: transparent;
+        height: 36px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        position: relative;
+        margin-top:10px;
+    }
+
+    .button {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .play, .pause{
+        position:absolute;
+        left:0;
+        top:0;
+
+        background-repeat:no-repeat;
+        background-position:center center;
+        opacity:.9;
+    }
+
+    .play {
+        background-image: url(../images/av-player/play-dark.svg);
+        background-size:18px auto;
+    }
+
+    .pause {
+        display: none;
+        background-image: url(../images/av-player/pause-dark.svg);
+        background-size:22px auto;
+    }
+
+    .progress-wrapper {
+        top:0;
+        margin:0 85px 0 25px;
+        width:auto;
+        padding: 0 10px;
+        position:relative;
+        top:9px;
+    }
+
+    .progress-bg,  .volume{
+        height:8px;
+    }
+
+    .progress,  .elapsed, .volume-value{
+        height:100%;
+    }
+
+    .volume-value,  .elapsed{
+        background: #333;
+    }
+
+    .progress-bg, .volume {
+
+        background:#e3e3e3;
+        margin: 9px 0;
+    }
+
+    .progress-bg {
+        width: 100%;
+    }
+
+    .progress {
+        cursor: pointer;
+        width:10%;
+    }
+
+    .volume-wrapper {
+        position:absolute;
+        right:0;
+        top:0;
+        width: 80px;
+        padding: 0 10px 0 35px;
+        background: transparent url(../images/av-player/volume-high-dark.svg) no-repeat 10px center scroll;
+        background-size:18px auto;
+    }
+
+    .volume {
+        cursor: pointer;
+    }
+
+    .unused-controls {
+        display: none !important;
+    }
+
+
+/* http://perishablepress.com/press/2009/12/06/new-clearfix-hack */
+    .player:after, .ttw-video-player .progress-bg:after  {
+        clear: both;
+        content: ' ';
+        display: block;
+        font-size: 0;
+        line-height: 0;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+}
+
+.audio .jPlayer-container{
+    height:0;
+
+}
+
+
+/*********************************
+   Document Viewer - Image File
+*********************************/
+
+.dv-image{
+    display:block;
+    margin:0 auto;
+    width:100%;
+    padding:10px 0;
+}
+
+/*********************************
+   Document Viewer - PDF File
+*********************************/
+.pdf .document-viewer{
+    padding:40px 10px 10px 10px;
+}
+.pdf-menu{
+    background: rgb(249,249,249);
+    height:30px;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    border-bottom:1px solid rgba(0, 0, 0, .1);
+    box-shadow:0 2px 2px rgba(0, 0, 0, .02);
+    overflow:hidden;
+
+    .cant-select;
+
+
+    > div{
+        float:left;
+        font-size:12px;
+        text-shadow:0 1px 0 #fff;
+        color:#666;
+        line-height:30px;
+        padding:0 10px;
+        border-right:1px solid rgba(0, 0, 0, .15);
+
+        cursor:pointer;
+
+        &:hover{
+            background-color:rgba(255, 255, 255, .4);
+        }
+
+        &.disabled{
+            color: #ccc;
+            cursor:not-allowed;
+        }
+        .prev-page{
+
+        }
+
+        &:first-child{
+            border-left:none;
+        }
+
+        &:last-child{
+            float:right;
+            border:none;
+
+            input, input:focus{
+                width:25px;
+                border: 1px solid rgba(0, 0, 0, .1);
+                outline:none;
+                background:rgba(255, 255, 255, .1);
+                text-align:center;
+                margin-bottom:2px;
+            }
+        }
+
+    }
+
+
+}
+
+.has-document-viewer-modal{
+    max-height:100% !important;
+    overflow:hidden;
+
+}
+.document-viewer-modal-overlay{
+    position:absolute;
+    padding-bottom:50px;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background:rgba(0, 0, 0, .4);
+    z-index:9999;
+    overflow:auto;
+
+    .document-viewer-close{
+        color: #fff;
+        background: rgba(0, 0, 0, .4);
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: -25px;
+        top: 4px;
+        overflow: hidden;
+        text-indent: 100%;
+        cursor: pointer;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+
+
+        &:hover,
+        &:focus {
+            outline: none;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 60%;
+            top: 50%;
+            left: 50%;
+            background: #ccc;
+        }
+
+        &:hover::before,
+        &:hover::after {
+            background: #fff;
+        }
+
+        &::before {
+            -webkit-transform: translate(-50%,-50%) rotate(45deg);
+            transform: translate(-50%,-50%) rotate(45deg);
+        }
+
+        &::after {
+            -webkit-transform: translate(-50%,-50%) rotate(-45deg);
+            transform: translate(-50%,-50%) rotate(-45deg);
+        }
+    }
+}
+
+.document-viewer-modal.document-viewer-wrapper{
+    margin:1% auto;
+    display:block;
+    float:none;
+
+    box-shadow:0 0 30px rgba(0, 0, 0, .25);
+}
+
+
+.unsupported-type{
+    font-size:16px;
+    background-image: url(../images/document-bg.png);
+    background-repeat: no-repeat;
+    background-position: center 30%;
+    background-color:#fff;
+    text-align:center;
+
+    .document-viewer-outer{
+        height:100%;
+        display:table;
+        background:transparent;
+    }
+
+    .document-viewer{
+        padding:40px;
+        min-height:300px;
+        position: relative;
+    }
+
+    &.audio {
+        background-image: url(../images/audio-bg.png);
+    }
+
+    &.image {
+        background-image: url(../images/image-bg.png);
+    }
+
+    &.video {
+        background-image: url(../images/video-bg.png);
+    }
+
+    &.pdf, &.code, &.txt, &.document {
+        background-image: url(../images/document-bg.png);
+    }
+
+    &.loaded {
+        background-image: none !important;
+        min-height: 0;
+    }
+}
+
+
+.unsupported-file-info, .document-viewer-placeholder{
+   // position:absolute;
+    bottom:0;
+    left:0;
+
+    padding: 0;
+    width:100%;
+    text-align:center;
+    display:table;
+
+    .document-viewer-placeholder-inner{
+        text-align: center;
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+        margin: 0 auto;
+    }
+    .document-icon{
+        width:100%;
+        height:75px;
+        background:transparent url(../images/file.svg) no-repeat center center;
+        background-size:50px 100px;
+        color:#ccc;
+    }
+
+    .filename{
+        font-size: 16px;
+
+        margin-bottom: 16px;
+    }
+
+    .file-extension{
+        background: #e7eff8;
+        display: inline-block;
+        padding: 4px 17px;
+        color: #888;
+    }
+}
+
+
+.audio .document-viewer-placeholder{
+    display:block;
+    position:relative;
+    z-index:0;
+
+    .document-viewer-placeholder-inner{
+        display:block;
+        text-align:left;
+        padding:8px 5% 0 5%;
+    }
+
+    .document-icon{
+        width:50px;
+        height:50px;
+        width:20%;
+        background-size:100%;
+    }
+
+    .filename{
+        margin-bottom:5px;
+        .ellipsis;
+    }
+
+    .placeholder-info{
+        padding-left:20px;
+        width:70%;
+
+    }
+
+    .document-icon, .placeholder-info{
+        float:left;
+    }
+
+
+}
+
+.document-viewer-menu{
+    background:#fafafa;
+
+    color:#999;
+    font-size:12px;
+    border-top:1px solid #eee;
+    text-align:left;
+    padding:0 10px;
+//    opacity:0;
+
+    span{
+        margin-right:10px;
+        cursor:pointer;
+        padding:10px;
+        display:inline-block;
+
+        .cant-select;
+
+        &:hover{
+            color:#222;
+
+        }
+    }
+}
+
+.document-viewer:hover .document-viewer-menu{
+    opacity:1;
+}
+
+
+
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+.clear{
+    clear:both;
+    float:left;
+}
+
+
+

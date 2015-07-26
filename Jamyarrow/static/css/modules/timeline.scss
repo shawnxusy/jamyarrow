@@ -1,0 +1,697 @@
+//main: ../styles.scss
+
+.timeline {
+    .timeline-info {
+        clear: both;
+        margin: 0;
+        background-color: $white;
+        .timeline-info-content {
+            padding-left: 40px;
+            height: 90px;
+            @media (max-width: $screen-sm) {
+                padding: 0 8px;
+                height: 85px;
+            }
+            .timeline-info-content-title {
+                float: left;
+                margin-right: 20px;
+
+                @media (max-width: $screen-sm) {
+                    font-size: 1.3em;
+                    margin-right: 5px;
+                }
+            }
+            .timeline-info-content-items {
+                height: 90px;
+                overflow-y: hidden;
+                overflow-x: auto;
+                white-space: nowrap;
+
+                @media (max-width: $screen-sm) {
+                    height: 85px;
+                }
+
+                &::-webkit-scrollbar {
+                    height: 5px;
+                }
+                &::-webkit-scrollbar-track {
+                    background-color: $subtle-grey;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: $divider-grey;
+                }
+
+                .timeline-info-content-item {
+                    display: inline-block;
+                    margin: 0 10px;
+
+                    p {
+                        margin: 5px 0 0 0;
+                        @media (max-width: $screen-sm) {
+                            font-size: 1.05em;
+                        }
+                    }
+                    img {
+                        height: 40px;
+                        width: auto;
+                    }
+                    .timeline-info-tracker-icon {
+                        margin: 0 auto;
+                        width: 32px;
+                        height: 32px;
+                        @include border-radius(50%);
+                        background-color: $dark-blue;
+                        color: white;
+                        p {
+                            position: relative;
+                            top: 6px;
+                        }
+                    }
+                }
+            }
+            &:first-child {
+                @media (max-width: $screen-sm) {
+                    border-bottom: 1px solid $divider-grey;
+                }
+            }
+        }
+    }
+
+    .timeline-preview {
+        margin: 0;
+        background-color: #424242;
+        color: $white;
+        height: 80px;
+        padding: 0 40px;
+        p {
+            float: left;
+        }
+        a {
+            float: right;
+            display: block;
+            right: 10%;
+            background-color: $white;
+            padding: 5px 15px;
+            border: 1px solid $subtle-grey;
+            color: $text-dark-grey;
+            &:hover {
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+        @media (max-width: $screen-sm) {
+            padding: 5px 8px;
+            margin-top: -10px;
+        }
+    }
+
+    .timeline-content {
+        margin: 0;
+        .timeline-content-main {
+            margin: 0;
+            padding: 20px 40px;
+            @media (max-width: $screen-sm) {
+                padding: 5px 8px;
+                margin-top: -10px;
+            }
+
+            .timeline-content-item {
+                position: relative;
+                clear: both;
+                padding: 20px 0;
+
+                .timeline-content-item-date {
+                    width: 13%;
+                    float: left;
+                }
+                .timeline-content-item-type {
+                    width: 12%;
+                    float: left;
+                    position: relative;
+                    .timeline-content-item-type-wrap {
+                        width: 32px;
+                        height: 32px;
+                        @include border-radius(50%);
+                        background-color: $orange;
+                        color: white;
+                        z-index: 100;
+                        margin: 0 auto;
+                        span {
+                            position: relative;
+                            top: 7px;
+                            @media (max-width: $screen-sm) {
+                                top: 10px;
+                            }
+                        }
+                    }
+                    .timeline-content-item-connector-before, .timeline-content-item-connector-after {
+                        position: absolute;
+                        left: 50%;
+                        height: 0;
+                        border-left: 2px solid $subtle-grey;
+                        z-index: 0;
+                    }
+                    .timeline-content-item-connector-before {
+                        bottom: 32px;
+                    }
+                }
+
+                .timeline-content-add {
+                    color: lighten($neutral-grey, 20%);
+                    position: relative;
+                    display: block;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                    #timeline-content-add-icon::after {
+                        content: "Add";
+                        font-size: 0.85em;
+                        position: absolute;
+                        left: 64px;
+                        top: 2px;
+                        font-weight: 600;
+                    }
+                    p {
+                        display: inline;
+                        margin-left: 10px;
+                    }
+
+                    @media (max-width: $screen-sm) {
+                        width: 100%;
+                        background-color: $blue;
+                        color: $white;
+                        padding: 10px 20px;
+                        span {
+                            width: 100%;
+                            font-size: 1.3em;
+                        }
+                        #timeline-content-add-icon::after {
+                            content: "";
+                        }
+                    }
+                }
+                #timeline-content-add-form-wrapper {
+                    @media (max-width: $screen-sm) {
+                        &:before {
+                            width: 0;
+                            height: 0;
+                            background-image: none;
+                        }
+                        width: 100%;
+                    }
+                    padding-bottom: 10px;
+                    form {
+                        position: relative;
+                        #timeline-add-form-title {
+                            width: 100%;
+                            border: none;
+                            border-bottom: 1px solid $subtle-grey;
+                            padding: 10px 15px;
+                            font-weight: 600;
+                            @media (max-width: $screen-sm) {
+                                font-size: 1.3em;
+                            }
+                        }
+                        #timeline-add-form-title-error {
+                            position: absolute;
+                            left: 55%;
+                            top: 15px;
+                            color: $measure-red;
+                            @media (max-width: $screen-sm) {
+                                font-size: 1.3em;
+                            }
+                        }
+                        #timeline-add-form-description {
+                            width: 100%;
+                            border: none;
+                            min-height: 80px;
+                            padding: 10px 15px;
+                            @media (max-width: $screen-sm) {
+                                font-size: 1.3em
+                            }
+                        }
+                        #timeline-add-form-category {
+                            display: inline;
+                            margin-left: 15px;
+                            float: left;
+                            label {
+                                font-weight: 400;
+                                @media (max-width: $screen-sm) {
+                                    font-size: 1.3em;
+                                    margin-right: 10px;
+                                }
+                            }
+                            select {
+                                appearance: none;
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                font-size: 0.9em;
+                                padding: 0 5px;
+                                min-width: 85px;
+                                width: 20%;
+                                border: 1px solid darken($subtle-grey, 5%);
+                                text-align: center;
+                                position: relative;
+                                background: url("../img/tiny-down-triangle.png") 95% 25% no-repeat;
+                                @media (max-width: $screen-sm) {
+                                    width: 60%;
+                                    height: 25px;
+                                    float: right;
+                                    margin-right: 15px;
+                                    font-size: 1.2em;
+                                    padding: 0 15px;
+                                }
+                            }
+                            @media (max-width: $screen-sm) {
+                                float: none;
+                            }
+                        }
+                        #datetimepicker {
+                            float: right;
+                            margin-right: 15px;
+                            width: 55%;
+                            input {
+                                height: 22px;
+                                border: 1px solid $subtle-grey;
+                                box-shadow: none;
+                                color: black;
+                                font-size: 0.9em;
+                            }
+                            .input-group-addon {
+                                height: 16px;
+                                padding: 3px 12px;
+                                font-size: 0.8em;
+                                background-color: $subtle-grey;
+                            }
+                            @media (max-width: $screen-sm) {
+                                float: none;
+                                margin: 10px 15px;
+                                width: 90%;
+                                input {
+                                    height: 25px;
+                                    font-size: 1.1em;
+                                }
+                            }
+                        }
+                        #timeline-add-form-file {
+                            clear: both;
+                            display: inline;
+                            margin-left: 10px;
+                            width: 60%;
+                            float: left;
+                            margin-top: 5px;
+                            @media (max-width: $screen-sm) {
+                                width: 90%;
+                                margin: 0 15px;
+                            }
+                        }
+                        #timeline-add-form-submit {
+                            float: right;
+                            margin: 5px 15px 0 0;
+                            padding: 3px 15px;
+                            background-color: $blue;
+                            color: $white;
+                            border: none;
+                            @include border-radius(3px);
+                            @media (max-width: $screen-sm) {
+                                margin: 10px 15px;
+                                width: 40%;
+                                height: 35px;
+                                font-size: 1.3em;
+                                font-weight: 600;
+                            }
+                        }
+                        #timeline-add-form-cancel {
+                            float: right;
+                            margin: 5px 15px 0 0;
+                            padding: 3px 15px;
+                            background-color: $divider-grey;
+                            color: $white;
+                            border: none;
+                            @include border-radius(3px);
+                            @media (max-width: $screen-sm) {
+                                float: left;
+                                margin: 10px 15px;
+                                width: 40%;
+                                height: 35px;
+                                font-size: 1.3em;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+                .timeline-content-edit-form-wrapper {
+                    padding-bottom: 10px;
+                    width: 75%;
+                    float: right;
+                    padding-bottom: 10px;
+                    background-color: $white;
+                    @media (max-width: $screen-sm) {
+                        width: 100%;
+                        float: none;
+                    }
+                    form {
+                        position: relative;
+                        .timeline-edit-form-title {
+                            width: 100%;
+                            border: none;
+                            border-bottom: 1px solid $subtle-grey;
+                            padding: 10px 15px;
+                            font-weight: 600;
+                            @media (max-width: $screen-sm) {
+                                font-size: 1.3em;
+                            }
+                        }
+                        .timeline-edit-form-title-error {
+                            position: absolute;
+                            left: 55%;
+                            top: 15px;
+                            color: $measure-red;
+                            @media (max-width: $screen-sm) {
+                                font-size: 1.3em;
+                            }
+                        }
+                        .timeline-edit-form-description {
+                            width: 100%;
+                            border: none;
+                            min-height: 80px;
+                            padding: 10px 15px;
+                            @media (max-width: $screen-sm) {
+                                font-size: 1.3em;
+                            }
+                        }
+                        .timeline-edit-form-category {
+                            display: inline;
+                            margin-left: 15px;
+                            float: left;
+                            @media (max-width: $screen-sm) {
+                                float: none;
+                            }
+                            label {
+                                font-weight: 400;
+                                @media (max-width: $screen-sm) {
+                                    font-size: 1.3em;
+                                    margin-right: 10px;
+                                }
+                            }
+                            select {
+                                appearance: none;
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                font-size: 0.9em;
+                                padding: 0 5px;
+                                min-width: 85px;
+                                width: 20%;
+                                border: 1px solid darken($subtle-grey, 5%);
+                                text-align: center;
+                                position: relative;
+                                background: url("../img/tiny-down-triangle.png") 95% 25% no-repeat;
+                                @media (max-width: $screen-sm) {
+                                    width: 60%;
+                                    height: 25px;
+                                    float: right;
+                                    margin-right: 15px;
+                                    font-size: 1.2em;
+                                    padding: 0 15px;
+                                }
+                            }
+                        }
+                        .edit-datetimepicker {
+                            float: right;
+                            margin-right: 15px;
+                            width: 55%;
+                            input {
+                                height: 22px;
+                                border: 1px solid $subtle-grey;
+                                box-shadow: none;
+                                color: black;
+                                font-size: 0.9em;
+                            }
+                            .input-group-addon {
+                                height: 16px;
+                                padding: 3px 12px;
+                                font-size: 0.8em;
+                                background-color: $subtle-grey;
+                            }
+                            @media (max-width: $screen-sm) {
+                                float: none;
+                                margin: 10px 15px;
+                                width: 90%;
+                                input {
+                                    height: 25px;
+                                    font-size: 1.1em;
+                                }
+                            }
+                        }
+                        .timeline-edit-form-file {
+                            clear: both;
+                            display: inline;
+                            margin-left: 10px;
+                            width: 60%;
+                            float: left;
+                            margin-top: 5px;
+                            @media (max-width: $screen-sm) {
+                                width: 90%;
+                                margin: 0 15px;
+                            }
+                        }
+                        .timeline-edit-form-delete {
+                            float: right;
+                            margin: 5px 15px 0 0;
+                            padding: 3px 15px;
+                            background-color: $measure-red;
+                            color: $white;
+                            border: none;
+                            @include border-radius(3px);
+                            @media (max-width: $screen-sm) {
+                                float: left;
+                                margin: 10px 15px;
+                                width: 40%;
+                                height: 35px;
+                                font-size: 1.3em;
+                                font-weight: 600;
+                            }
+                        }
+                        .timeline-edit-form-submit {
+                            float: right;
+                            margin: 5px 15px 0 0;
+                            padding: 3px 15px;
+                            background-color: $blue;
+                            color: $white;
+                            border: none;
+                            @include border-radius(3px);
+                            @media (max-width: $screen-sm) {
+                                margin: 10px 15px;
+                                width: 40%;
+                                height: 35px;
+                                font-size: 1.3em;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+
+                .timeline-content-item-detail {
+                    width: 75%;
+                    float: left;
+                    background-color: $white;
+                    border: 1px solid $subtle-grey;
+                    position: relative;
+                    margin-top: -7px;
+                    @media (max-width: $screen-sm) {
+                        float: right;
+                        width: 83%;
+                    }
+                    &:before {
+                        content: "";
+                    	width: 16px;
+                    	height: 20px;
+                        background-image: url("../img/tiny-triangle.png");
+                        position: absolute;
+                        left: -13px;
+                        top: 12px;
+                    }
+
+                    .timeline-content-item-detail-title {
+                        padding: 10px 15px;
+                        border-bottom: 1px solid $subtle-grey;
+                        overflow: hidden;
+                        p {
+                            float: left;
+                            margin: 0;
+                            @media (max-width: $screen-sm) {
+                                font-size: 1.3em;
+                            }
+                        }
+                        .timeline-content-item-detail-action {
+                            float: right;
+                            .timeline-content-item-detail-type {
+                                display: inline;
+                                margin: 0 5px;
+                                span {
+                                    position: relative;
+                                    top: 3px;
+                                }
+                            }
+                            .timeline-content-item-detail-edit {
+                                cursor: pointer;
+                                display: inline;
+                                margin: 0 5px;
+                                span {
+                                    position: relative;
+                                    top: 3px;
+                                    font-size: 1.2em;
+                                    @media (max-width: $screen-sm) {
+                                        font-size: 1.5em;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .timeline-content-item-description {
+                        clear: both;
+                        padding: 10px 15px;
+                        @media (max-width: $screen-sm) {
+                            font-size: 1.3em;
+                        }
+                    }
+                }
+            }
+
+            #floating-date {
+                position: fixed;
+                width: 100px;
+                right: 10px;
+                height: 40px;
+                background-color: rgba(50,50,50,0.8);
+                z-index: 500;
+                padding: 5px 5px 5px 30px;
+                border-top-left-radius: 30px;
+                border-bottom-left-radius: 30px;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+
+                .floating-date-clock {
+                    width: 30px;
+                    height: 30px;
+                    @include border-radius(50%);
+                    background-color: $white;
+                    position: relative;
+                    left: -25px;
+                    float: left;
+                    background-image: url("../img/watch-face.png");
+                    background-size: cover;
+
+                    #floating-date-hour {
+                        height: 20px;
+                        width: auto;
+                        position: relative;
+                        left: 14px;
+                        top: 4px;
+                    }
+
+                    #floating-date-minute {
+                        height: 24px;
+                        width: auto;
+                        position: relative;
+                        left: 10px;
+                        top: 4px;
+                    }
+                }
+                .floating-date-date {
+                    font-size: 1.2em;
+                    white-space: nowrap;
+                    position: relative;
+                    left: -15px;
+                    color: $white;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .timeline-content-filter {
+            margin: 0;
+            padding: 40px 40px;
+
+            .timeline-content-filter-list {
+                button, input {
+                    display: block;
+                    width: 90%;
+                    padding: 10px 10px;
+                    margin: 10px 0;
+                    background-color: $white;
+                    border: 1px solid $subtle-grey;
+                    text-align: center;
+                    &.active {
+                        background-color: $dark-blue;
+                        color: $white;
+                        border: none;
+                    }
+                    &:active, &:checked, &:focus, &:link {
+                        outline: none;
+                    }
+                }
+                .timeline-content-filter-search {
+                    position: relative;
+                    .timeline-content-filter-search-icon {
+                        position: absolute;
+                        top: 12px;
+                        right: 30px;
+                        color: $divider-grey;
+                    }
+                }
+            }
+        }
+
+        .timeline-content-mobile-filter {
+            padding: 10px 8px;
+            width: 100%;
+            margin-bottom: -10px;
+            select {
+                width: 80%;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                @include border-radius(0);
+                height: 40px;
+                float: left;
+                border: none;
+                background-color: $subtle-grey;
+                padding: 0 10px;
+                font-size: 1.3em;
+            }
+            .timeline-content-filter-search {
+                position: relative;
+                input {
+                    width: 80%;
+                    margin-left: 4%;
+                }
+                .timeline-content-filter-search-icon {
+                    font-size: 1.3em;
+                    background-color: $subtle-grey;
+                    width: 18%;
+                    float: right;
+                    margin-left: 2%;
+                    height: 40px;
+                    color: darken($divider-grey, 10%);
+                }
+                &:before { // This is a hack, since pseudo element does not work on select
+                    content: "\e252";
+                    display: inline-block;
+                    font-family: 'Glyphicons Halflings';
+                    font-style: normal;
+                    font-weight: normal;
+                    position: absolute;
+                    right: 25%;
+                    font-size: 20px;
+                    color: $divider-grey;
+                    top: 10px;
+                    z-index: 100;
+                    line-height: 1;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+            }
+        }
+    }
+}

@@ -9,7 +9,7 @@ $(document).ready(function() {
         $("#side-toggle").on("click", function() {
 			$(".navig").addClass("slide");
             $(".nav-hamburger").hide();
-            $(".logo-grid").removeAttr("href");
+            // $(".logo-grid").removeAttr("href");
         });
 
         $(".logo-container, .nav-fold").on("click", function() {

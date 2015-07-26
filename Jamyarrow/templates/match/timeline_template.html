@@ -1,0 +1,160 @@
+{% extends "site_base.html" %}
+{% load staticfiles %}
+{% load app_tags %}
+
+{% block site_title %} {{ block.super }} - Home {% endblock %}
+
+{% block nav %}
+{% include "_nav.html" %}
+{% endblock %}
+
+
+{% block container %}
+    <div class="container">
+        {% include "_topnav.html" %}
+        <div class="timeline">
+            {% if patient.id == target.id %}
+            <div class="timeline-preview">
+                <p class="vertical-center">This is how your <b>Timeline</b> will be seen by other patients in the hospital system.</p>
+                <a class="vertical-center" href="{% url 'match' %}">Exit Preview Mode</a>
+            </div>
+            {% endif %}
+            <div class="timeline-info row">
+                {% if target.category_visible %}
+                <div class="timeline-info-content col-sm-11">
+                    <p class="timeline-info-content-title vertical-center capitalized">I'm tracking：</p>
+                    <div class="timeline-info-content-items">
+                        <div class="timeline-info-content-item vertical-center">
+                            <div class="timeline-info-tracker-icon center"><p class="icon-calendar larger-1"></p></div>
+                            <p class="title-font uppercase smaller-3"><b>Medicine</b></p>
+                        </div>
+                        <div class="timeline-info-content-item vertical-center">
+                            <div class="timeline-info-tracker-icon center"><p class="icon-calendar larger-1"></p></div>
+                            <p class="title-font uppercase smaller-3"><b>Symptoms</b></p>
+                        </div>
+                        <div class="timeline-info-content-item vertical-center">
+                            <div class="timeline-info-tracker-icon center"><p class="icon-calendar larger-1"></p></div>
+                            <p class="title-font uppercase smaller-3"><b>Symptoms</b></p>
+                        </div>
+                        <div class="timeline-info-content-item vertical-center">
+                            <div class="timeline-info-tracker-icon center"><p class="icon-calendar larger-1"></p></div>
+                            <p class="title-font uppercase smaller-3"><b>Symptoms</b></p>
+                        </div>
+                        <div class="timeline-info-content-item vertical-center">
+                            <div class="timeline-info-tracker-icon center"><p class="icon-calendar larger-1"></p></div>
+                            <p class="title-font uppercase smaller-3"><b>Symptoms</b></p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if target.doctor_visible %}
+                <div class="timeline-info-content col-sm-13">
+                    <p class="timeline-info-content-title vertical-center capitalized">My doctors：</p>
+                    <div class="timeline-info-content-items">
+                        <div class="timeline-info-content-item center vertical-center">
+                            <img src="{% static 'img/profile-jane.png'%}" class="timeline-info-doctor-image">
+                            <p class="title-font uppercase smaller-3"><b>Dr. Lee</b></p>
+                        </div>
+                        <div class="timeline-info-content-item center vertical-center">
+                            <img src="{% static 'img/profile-jane.png'%}" class="timeline-info-doctor-image">
+                            <p class="title-font uppercase smaller-3"><b>Dr. Lambert</b></p>
+                        </div>
+                        <div class="timeline-info-content-item center vertical-center">
+                            <img src="{% static 'img/profile-jane.png'%}" class="timeline-info-doctor-image">
+                            <p class="title-font uppercase smaller-3"><b>Dr. Gupta</b></p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            {% if target.timeline_visible %}
+                <div class="timeline-content row">
+                    <div class="timeline-content-mobile-filter no-desktop">
+                        <select class="timeline-content-mobile-filter-list">
+                            <option class="timeline-filter-all selected">View All</option>
+                            <option class="timeline-filter-milestone">Milestone</option>
+                            <option class="timeline-filter-test-result">Test Result</option>
+                            <option class="timeline-filter-appointment">Appointment</option>
+                            <option class="timeline-filter-prescription">Prescription</option>
+                            <option class="timeline-filter-my-event">My Event</option>
+                        </select>
+                        <div class="timeline-content-filter-search">
+                            <input type="text" placeholder="Other" class="no-show">
+                            <div class="timeline-content-filter-search-icon center">
+                                <i class="glyphicon glyphicon-search vertical-center"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-content-main col-sm-18">
+                        <div class="timeline-content-item">
+                            <div class="timeline-content-item-date no-mobile">
+                                <p class="neutral-grey larger-2"><b>2015</b></p>
+                            </div>
+                        </div>
+
+                        <div id="floating-date" class="no-opacity">
+                            <div class="floating-date-clock">
+                                <img src="{% static 'img/watch-hour.png' %}" id="floating-date-hour">
+                                <img src="{% static 'img/watch-minute.png' %}" id="floating-date-minute">
+                            </div>
+                            <div class="floating-date-date uppercase vertical-center">
+                                July 21
+                            </div>
+                        </div>
+                        {% for event in events %}
+                            <div class="timeline-content-item timeline-content-{{ event.category }}">
+                                <div class="timeline-content-item-date no-mobile">
+                                    <p class="larger-2"><b>{{ event.time | date | dateonly }}</b></p>
+                                </div>
+                                <div class="timeline-content-item-type center">
+                                    <div class="timeline-content-item-connector-before"></div>
+                                    <div class="timeline-content-item-type-wrap">
+                                        <span class="icon-tips larger-1"></span>
+                                    </div>
+                                    <div class="timeline-content-item-connector-after"></div>
+                                </div>
+                                <div class="timeline-content-item-detail">
+                                    <div class="timeline-content-item-detail-title">
+                                        <p class="capitalized larger-1"><b>{{ event.name }}</b></p>
+                                    </div>
+                                    <div class="timeline-content-item-description text-grey">
+                                        {{ event.description }}
+                                    </div>
+                                    <div class="timeline-content-item-attachment center">
+                                        {{ event.attachment }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="timeline-content-filter col-sm-6 no-mobile">
+                        <p class="larger-0">View by:</p>
+                        <div class="timeline-content-filter-list">
+                            <button class="timeline-filter-all active">View All</button>
+                            <button class="timeline-filter-milestone">Milestone</button>
+                            <button class="timeline-filter-test-result">Test Result</button>
+                            <button class="timeline-filter-appointment">Appointment</button>
+                            <button class="timeline-filter-prescription">Prescription</button>
+                            <button class="timeline-filter-my-event">My Event</button>
+                            <div class="timeline-content-filter-search">
+                                <input type="text" placeholder="Other">
+                                <span class="timeline-content-filter-search-icon">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_script %}
+    <script type="text/javascript" src="{% static "js/nav.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/timeline.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/match.js" %}"></script>
+{% endblock %}

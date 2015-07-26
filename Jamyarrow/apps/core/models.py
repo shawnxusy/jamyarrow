@@ -33,8 +33,32 @@ class Patient(models.Model):
 									choices=CANCER_TYPES)
 	cancer_stage = models.IntegerField(default=1)
 
+	#quote
+	quote = models.CharField(max_length=50)
+
+	#tour of case match
+	case_match_tour = models.BooleanField(default=False)
+
+	##privacy settings
+	#basic privacy
+	profile_visible = models.BooleanField(default=True)
+	contact_visible = models.BooleanField(default=True)
+	category_visible = models.BooleanField(default=False)
+	doctor_visible = models.BooleanField(default=False)
+
+	#timeline privacy
+	timeline_visible = models.BooleanField(default=True)
+	milestone_visible = models.BooleanField(default=True)
+	test_result_visible = models.BooleanField(default=False)
+	appointment_visible = models.BooleanField(default=False)
+	prescription_visible = models.BooleanField(default=False)
+	my_event_visible = models.BooleanField(default=False)
+
+
 	def __unicode__(self):
 		return u'%s' % self.name
+
+
 
 #class for tracker
 class TrackedItem(models.Model):
@@ -53,7 +77,7 @@ class TrackedItem(models.Model):
 		(MEDICATION, 'Medication'),
 	)
 	patient = models.ForeignKey(Patient)
-	name = models.CharField(max_length=50, unique=True)
+	name = models.CharField(max_length=50)
 	category = models.CharField(max_length=2, choices=CATEGORY)
 	severity = models.BooleanField(default=False)
 	duration = models.BooleanField(default=False)
@@ -61,6 +85,9 @@ class TrackedItem(models.Model):
 	quantity = models.BooleanField(default=False)
 	yes_no = models.BooleanField(default=False)
 	goal = models.FloatField(blank=True)
+
+	class Meta:
+		unique_together = ('patient', 'name',)
 
 	def __unicode__(self):
 		return u'%s' % self.name
@@ -98,3 +125,24 @@ class Alert(models.Model):
 	daytime = models.TimeField()
 	dayweek = models.CharField(max_length=2,
 								choices=DAYS)
+
+
+class TimelineEvent(models.Model):
+	MILESTONE = 'MS'
+	TEST_RESULT = 'TS'
+	APPOINTMENT = 'AP'
+	PRESCRIPTION = 'PS'
+	MY_EVENT = 'ME'
+	CATEGORY = (
+		(MILESTONE, 'Milestone'),
+		(TEST_RESULT, 'Test Result'),
+		(APPOINTMENT, 'Appointment'),
+		(PRESCRIPTION, 'Prescription'),
+		(MY_EVENT, 'My Event'),
+	)
+	patient = models.ForeignKey(Patient)
+	name = models.CharField(max_length=50)
+	time = models.DateTimeField(default=timezone.now)
+	description = models.TextField(blank=True)
+	category = models.CharField(max_length=2, choices=CATEGORY)
+	attachment = models.FileField(upload_to='timeline',blank=True)

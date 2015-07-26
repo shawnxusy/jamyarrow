@@ -1,0 +1,24 @@
+{% extends "site_base.html" %}
+{% load staticfiles %}
+{% load app_tags %}
+
+{% block site_title %} {{ block.super }} - Home {% endblock %}
+
+{% block nav %}
+{% include "_nav.html" %}
+{% endblock %}
+
+
+{% block container %}
+    <div class="container">
+        {% include "_topnav.html" %}
+        <div class="match">
+            Holaa!
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_script %}
+    <script type="text/javascript" src="{% static "js/nav.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/match.js" %}"></script>
+{% endblock %}

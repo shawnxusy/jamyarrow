@@ -18,6 +18,8 @@ $neutral-grey: #696969;
 $subtle-grey: #ededed;
 $background-grey: #f9fafb;
 $divider-grey: #ced0cd;
+$text-grey: #a1a1a1;
+$text-dark-grey: #313131;
 
 $blue: #2e97de;
 $dark-blue: #298acc;
@@ -25,6 +27,7 @@ $darker-blue: #105989;
 $green: #65bc6c;
 $dark-green: #58ac5f;
 $grass-green: #abd25e;
+$orange: #ffc600;
 
 $measure-green: #45de4f;
 $measure-lightgreen: #d2f20d;
@@ -64,6 +67,10 @@ $nav-height-mobile: 60px;
 	&:link, &:visited {
 		color: inherit;
 	};
+}
+
+.no-opacity {
+	opacity: 0;
 }
 
 .vertical-center {
@@ -106,6 +113,10 @@ $nav-height-mobile: 60px;
 	}
 }
 
+.no-show {
+	display: none;
+}
+
 .larger-0 {
 	font-size: 1.1em;
 }
@@ -126,6 +137,14 @@ $nav-height-mobile: 60px;
 	font-size: 0.9em;
 }
 
+.smaller-2 {
+	font-size: 0.8em;
+}
+
+.smaller-3 {
+	font-size: 0.7em;
+}
+
 .uppercase {
 	text-transform: uppercase;
 }
@@ -138,6 +157,14 @@ $nav-height-mobile: 60px;
 
 .capitalized {
 	text-transform: capitalize;
+}
+
+body::webkit-scrollbar {
+	height: 3px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #b46868;
 }
 
 $track-color: lighten($subtle-grey, 3%);
@@ -181,4 +208,68 @@ $contrast: 5%;
   border-radius: $thumb-radius;
   background: $thumb-color;
   cursor: pointer;
+}
+
+.toggle-button {
+	.tgl{
+		display: none;
+		// add default box-sizing for this scope
+		&, &:after, &:before,
+		& *, & *:after, & *:before,
+		& + .tgl-btn{
+			box-sizing: border-box;
+			&::selection{
+				background: none;
+			}
+		}
+		+ .tgl-btn{
+			outline: 0;
+			display: block;
+			width: 4em;
+			height: 2em;
+			position: relative;
+			cursor: pointer;
+		 user-select: none;
+			&:after, &:before{
+				position: relative;
+				display: block;
+				content: "";
+				width: 50%;
+				height: 100%;
+			}
+			&:after{
+				left: 0;
+			}
+			&:before{
+				display: none;
+			}
+		}
+		&:checked{
+			+ .tgl-btn{
+				&:after{
+					left: 50%;
+				}
+			}
+		}
+	}
+
+	// themes
+	.tgl-light{
+		+ .tgl-btn{
+			background: #f0f0f0;
+			border-radius: 2em;
+			padding: 2px;
+			transition: all .4s ease;
+			&:after{
+				border-radius: 50%;
+				background: #fff;
+				transition: all .2s ease;
+			}
+		}
+		&:checked{
+			+ .tgl-btn{
+				background: $grass-green;
+			}
+		}
+	}
 }

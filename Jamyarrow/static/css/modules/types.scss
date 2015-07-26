@@ -6,6 +6,20 @@ html, body {
 	overflow-x: hidden;
 }
 
+.container {
+    @include calc(width, "100% - #{$nav-width}");
+    position: absolute;
+    left: $nav-width;
+    background-color: $background-grey;
+    min-height: 795px;
+    padding: 0;
+
+    @media (max-width: $screen-sm) {
+		width: 100%;
+        left: 0;
+	}
+}
+
 a {
 	color: inherit;
 }
@@ -101,4 +115,24 @@ h5, .h5 {
 
 .subtle-grey {
 	color: $subtle-grey;
+}
+
+.divider-grey {
+	color: $divider-grey;
+}
+
+.text-grey {
+	color: $text-grey;
+}
+
+.text-dark-grey {
+	color: $text-dark-grey;
+}
+
+.black {
+	color: black;
+}
+
+.orange {
+	color: $orange;
 }

@@ -1,0 +1,212 @@
+{% extends "site_base.html" %}
+{% load staticfiles %}
+{% load app_tags %}
+
+{% block site_title %} {{ block.super }} - Home {% endblock %}
+
+{% block nav %}
+{% include "_nav.html" %}
+{% endblock %}
+
+
+{% block container %}
+    <div class="container">
+        {% include "_topnav.html" %}
+        <div class="timeline">
+            <div class="timeline-info row">
+                <div class="timeline-info-content col-sm-11">
+                    <p class="timeline-info-content-title vertical-center capitalized">I'm tracking：</p>
+                    <div class="timeline-info-content-items">
+                        <div class="timeline-info-content-item vertical-center">
+                            <div class="timeline-info-tracker-icon center"><p class="icon-calendar larger-1"></p></div>
+                            <p class="title-font uppercase smaller-3"><b>Medicine</b></p>
+                        </div>
+                        <div class="timeline-info-content-item vertical-center">
+                            <div class="timeline-info-tracker-icon center"><p class="icon-calendar larger-1"></p></div>
+                            <p class="title-font uppercase smaller-3"><b>Symptoms</b></p>
+                        </div>
+                        <div class="timeline-info-content-item vertical-center">
+                            <div class="timeline-info-tracker-icon center"><p class="icon-calendar larger-1"></p></div>
+                            <p class="title-font uppercase smaller-3"><b>Symptoms</b></p>
+                        </div>
+                        <div class="timeline-info-content-item vertical-center">
+                            <div class="timeline-info-tracker-icon center"><p class="icon-calendar larger-1"></p></div>
+                            <p class="title-font uppercase smaller-3"><b>Symptoms</b></p>
+                        </div>
+                        <div class="timeline-info-content-item vertical-center">
+                            <div class="timeline-info-tracker-icon center"><p class="icon-calendar larger-1"></p></div>
+                            <p class="title-font uppercase smaller-3"><b>Symptoms</b></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-info-content col-sm-13">
+                    <p class="timeline-info-content-title vertical-center capitalized">My doctors：</p>
+                    <div class="timeline-info-content-items">
+                        <div class="timeline-info-content-item center vertical-center">
+                            <img src="{% static 'img/profile-jane.png'%}" class="timeline-info-doctor-image">
+                            <p class="title-font uppercase smaller-3"><b>Dr. Lee</b></p>
+                        </div>
+                        <div class="timeline-info-content-item center vertical-center">
+                            <img src="{% static 'img/profile-jane.png'%}" class="timeline-info-doctor-image">
+                            <p class="title-font uppercase smaller-3"><b>Dr. Lambert</b></p>
+                        </div>
+                        <div class="timeline-info-content-item center vertical-center">
+                            <img src="{% static 'img/profile-jane.png'%}" class="timeline-info-doctor-image">
+                            <p class="title-font uppercase smaller-3"><b>Dr. Gupta</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-content row">
+                <div class="timeline-content-mobile-filter no-desktop">
+                    <select class="timeline-content-mobile-filter-list">
+                        <option class="timeline-filter-all selected">View All</option>
+                        <option class="timeline-filter-milestone">Milestone</option>
+                        <option class="timeline-filter-test-result">Test Result</option>
+                        <option class="timeline-filter-appointment">Appointment</option>
+                        <option class="timeline-filter-prescription">Prescription</option>
+                        <option class="timeline-filter-my-event">My Event</option>
+                    </select>
+                    <div class="timeline-content-filter-search">
+                        <input type="text" placeholder="Other" class="no-show">
+                        <div class="timeline-content-filter-search-icon center">
+                            <i class="glyphicon glyphicon-search vertical-center"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-content-main col-sm-18">
+                    <div class="timeline-content-item">
+                        <div class="timeline-content-item-date no-mobile">
+                            <p class="neutral-grey larger-2"><b>2015</b></p>
+                        </div>
+                        <div class="timeline-content-item-type timeline-content-add center">
+                            <span class="icon-tracker larger-3 no-mobile" id="timeline-content-add-icon"></span>
+                            <span class="no-desktop" id="timeline-content-add-word"><b>Add an Event</b></span>
+                            <span class="icon-contacts larger-3 no-show" id="timeline-content-delete-icon"></span>
+                        </div>
+                        <div class="timeline-content-item-detail no-show" id="timeline-content-add-form-wrapper">
+                            <form id="timeline-content-add-form">
+                                <input type="text" placeholder="Title" id="timeline-add-form-title" class="larger-1" name="name">
+                                <div class="smaller-1" id="timeline-add-form-title-error"></div>
+                                <textarea id="timeline-add-form-description" placeholder="Write some description" class="text-grey" name="description"></textarea>
+                                <div id="timeline-add-form-category">
+                                    <label class="regular smaller-1">Category:</label>
+                                    <select name="category">
+                                        <option selected value="MS">Milestones</option>
+                                        <option value="TS">Test results</option>
+                                        <option value="AP">Appointments</option>
+                                        <option value="PS">Prescriptions</option>
+                                        <option value="ME">My events</option>
+                                    </select>
+                                </div>
+                                <div class='input-group date' id='datetimepicker'>
+                                    <input type='text' class="form-control" placeholder="Now" name="time">
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                <input type="file" id="timeline-add-form-file" name="attachment">
+                                <button type="submit" id="timeline-add-form-submit">Add</button>
+                                <button type="submit" id="timeline-add-form-cancel">Cancel</button>
+                                {% csrf_token %}
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="floating-date" class="no-opacity">
+                        <div class="floating-date-clock">
+                            <img src="{% static 'img/watch-hour.png' %}" id="floating-date-hour">
+                            <img src="{% static 'img/watch-minute.png' %}" id="floating-date-minute">
+                        </div>
+                        <div class="floating-date-date uppercase vertical-center">
+                            July 21
+                        </div>
+                    </div>
+                    {% for event in events %}
+                    <div class="timeline-content-item timeline-content-{{ event.category }}">
+                        <div class="timeline-content-item-date no-mobile">
+                            <p class="larger-2"><b>{{ event.time | date | dateonly }}</b></p>
+                        </div>
+                        <div class="timeline-content-item-type center">
+                            <div class="timeline-content-item-connector-before"></div>
+                            <div class="timeline-content-item-type-wrap">
+                                <span class="icon-tips larger-1"></span>
+                            </div>
+                            <div class="timeline-content-item-connector-after"></div>
+                        </div>
+                        <div class="timeline-content-item-detail">
+                            <div class="timeline-content-item-detail-title">
+                                <p class="capitalized larger-1"><b>{{ event.name }}</b></p>
+                                <div class="timeline-content-item-detail-action">
+                                    <div class="timeline-content-item-detail-edit">
+                                        <span class="icon-alerts divider-grey"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-content-item-description text-grey">
+                                {{ event.description }}
+                            </div>
+                            <div class="timeline-content-item-attachment center">
+                                {{ event.attachment }}
+                            </div>
+                        </div>
+                        <div class="timeline-content-item-edit-form no-show timeline-content-edit-form-wrapper">
+                            <form class="timeline-content-edit-form">
+                                <input type="text" placeholder="{{ event.name }}" class="timeline-edit-form-title larger-1" name="name">
+                                <div class="smaller-1" class="timeline-edit-form-title-error"></div>
+                                <textarea class="timeline-edit-form-description" placeholder="{{ event.description }}" class="text-grey" name="description"></textarea>
+                                <div class="timeline-edit-form-category">
+                                    <label class="regular smaller-1">Category:</label>
+                                    <select name="category">
+                                        <option selected value="MS">Milestones</option>
+                                        <option value="TS">Test results</option>
+                                        <option value="AP">Appointments</option>
+                                        <option value="PS">Prescriptions</option>
+                                        <option value="ME">My events</option>
+                                    </select>
+                                </div>
+                                <div class='input-group date edit-datetimepicker'>
+                                    <input type='text' class="form-control" placeholder="{{ event.time }}" name="time">
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                <input type="file" class="timeline-edit-form-file" name="attachment" placeholder="{{ event.attachment }}">
+                                <button type="submit" class="timeline-edit-form-submit">Done</button>
+                                <button type="submit" class="timeline-edit-form-delete">Delete</button>
+                                <input class="timeline-edit-form-event-id no-show" name="id" value="{{ event.id }}">
+                                {% csrf_token %}
+                            </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <div class="timeline-content-filter col-sm-6 no-mobile">
+                    <p class="larger-0">View by:</p>
+                    <div class="timeline-content-filter-list">
+                        <button class="timeline-filter-all active">View All</button>
+                        <button class="timeline-filter-milestone">Milestone</button>
+                        <button class="timeline-filter-test-result">Test Result</button>
+                        <button class="timeline-filter-appointment">Appointment</button>
+                        <button class="timeline-filter-prescription">Prescription</button>
+                        <button class="timeline-filter-my-event">My Event</button>
+                        <div class="timeline-content-filter-search">
+                            <input type="text" placeholder="Other">
+                            <span class="timeline-content-filter-search-icon">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_script %}
+    <script type="text/javascript" src="{% static "js/nav.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/timeline.js" %}"></script>
+{% endblock %}

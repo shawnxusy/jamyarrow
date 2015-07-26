@@ -40,7 +40,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'app_tags',
     'home',
+    'timeline',
     'core',
+    'match',
     'userauth',
 )
 
@@ -81,6 +83,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
+
+MEDIA_URL = '/media/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

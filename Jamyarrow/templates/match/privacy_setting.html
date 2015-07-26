@@ -1,0 +1,178 @@
+{% extends "site_base.html" %}
+{% load staticfiles %}
+{% load app_tags %}
+
+{% block site_title %} {{ block.super }} - Home {% endblock %}
+
+{% block nav %}
+{% include "_nav.html" %}
+{% endblock %}
+
+
+{% block container %}
+    <div class="container">
+        {% include "_topnav.html" %}
+        <div class="match">
+            <div class="privacy-setting" id="privacy-setting-1">
+                <div class="privacy-title">
+                    <p class="larger-0"><b>Set Your Privacy</b> (Step 1 our of 2)</p>
+                </div>
+                <div class="privacy-content">
+                    <div class="privacy-content-description">
+                        <p>Patient Match allows you to find and access profiles of patients like you. Before browsing through profiles, tell us how you would like to be seen by other cancer patients in this hospital system. </p>
+                    </div>
+                    <div class="privacy-content-title">
+                        <p>Profile Visibility Options:</p>
+                    </div>
+                    <div class="privacy-content-item">
+                        <div class="privacy-toggle toggle-button center">
+                            <input class='tgl tgl-light' id='profile-visibility' type='checkbox' {% if patient.profile_visible %} checked {% endif %}>
+                            <label class='tgl-btn' for='profile-visibility'></label>
+                        </div>
+                        <div class="privacy-content-item-content">
+                            <p><b>Profile</b></p>
+                            <p>Your profile will be visible to other patients</p>
+                        </div>
+                    </div>
+                    <div class="privacy-content-separater"></div>
+                    <div class="privacy-content-item">
+                        <div class="privacy-toggle toggle-button center">
+                            <input class='tgl tgl-light' id='contact-visibility' type='checkbox' {% if patient.contact_visible %} checked {% endif %}>
+                            <label class='tgl-btn' for='contact-visibility'></label>
+                        </div>
+                        <div class="privacy-content-item-content">
+                            <p><b>Your Contact Information</b></p>
+                            <p>Your contact will be shared with other patients</p>
+                        </div>
+                    </div>
+                    <div class="privacy-content-item">
+                        <div class="privacy-toggle toggle-button center">
+                            <input class='tgl tgl-light' id='tracker-visibility' type='checkbox' {% if patient.category_visible %} checked {% endif %}>
+                            <label class='tgl-btn' for='tracker-visibility'></label>
+                        </div>
+                        <div class="privacy-content-item-content">
+                            <p><b>Your Tracker Categories</b></p>
+                            <p>Your categories being tracked will be shared</p>
+                        </div>
+                    </div>
+                    <div class="privacy-content-item">
+                        <div class="privacy-toggle toggle-button center">
+                            <input class='tgl tgl-light' id='doctor-visibility' type='checkbox' {% if patient.doctor_visible %} checked {% endif %}>
+                            <label class='tgl-btn' for='doctor-visibility'></label>
+                        </div>
+                        <div class="privacy-content-item-content">
+                            <p><b>Your Doctors</b></p>
+                            <p>Your doctors will be seen by other patients</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="privacy-progress center">
+                    <button class="progress-button progress-button-disabled" id="privacy-previous-1">Prev</button>
+                    <button class="progress-button progress-button-active" id="privacy-next-1">Next</button>
+                </div>
+            </div>
+            <div class="privacy-setting no-opacity" id="privacy-setting-2">
+                <div class="privacy-title">
+                    <p class="larger-0"><b>Set Your Privacy</b> (Step 2 our of 2)</p>
+                </div>
+                <div class="privacy-content">
+                    <div class="privacy-content-description">
+                        <p>Tell us how you would like your <b>Timeline</b> to be seen by other cancer patients in this hospital system.  </p>
+                    </div>
+                    <div class="privacy-content-title">
+                        <p>Timeline Visibility Options:</p>
+                    </div>
+                    <div class="privacy-content-item">
+                        <div class="privacy-toggle toggle-button center">
+                            <input class='tgl tgl-light' id='timeline-visibility' type='checkbox' {% if patient.timeline_visible %} checked {% endif %}>
+                            <label class='tgl-btn' for='timeline-visibility'></label>
+                        </div>
+                        <div class="privacy-content-item-content" id="privacy-timeline-content">
+                            <p><b>Timeline</b></p>
+                            <p>Your profile will be visible to other patients</p>
+                        </div>
+                        <a href="{% url 'view_timeline' patient.id %}" id="privacy-timeline-preview">Preview My Timeline</a>
+                    </div>
+                    <div class="privacy-content-separater"></div>
+                    <div class="privacy-content-item">
+                        <div class="privacy-toggle toggle-button center">
+                            <input class='tgl tgl-light' id='milestone-visibility' type='checkbox' {% if patient.milestone_visible %} checked {% endif %}>
+                            <label class='tgl-btn' for='milestone-visibility'></label>
+                        </div>
+                        <div class="privacy-content-item-content">
+                            <p><b>Your Milestone</b></p>
+                            <p>Your important events on timeline will be visible.</p>
+                        </div>
+                    </div>
+                    <div class="privacy-content-item">
+                        <div class="privacy-toggle toggle-button center">
+                            <input class='tgl tgl-light' id='test-result-visibility' type='checkbox' {% if patient.test_result_visible %} checked {% endif %}>
+                            <label class='tgl-btn' for='test-result-visibility'></label>
+                        </div>
+                        <div class="privacy-content-item-content">
+                            <p><b>Your Test Results</b></p>
+                            <p>Your test results will be shared with patients in hospital</p>
+                        </div>
+                    </div>
+                    <div class="privacy-content-item">
+                        <div class="privacy-toggle toggle-button center">
+                            <input class='tgl tgl-light' id='appointment-visibility' type='checkbox' {% if patient.appointment_visible %} checked {% endif %}>
+                            <label class='tgl-btn' for='appointment-visibility'></label>
+                        </div>
+                        <div class="privacy-content-item-content">
+                            <p><b>Your Appointments</b></p>
+                            <p>Your appointments can be seen by patients</p>
+                        </div>
+                    </div>
+                    <div class="privacy-content-item">
+                        <div class="privacy-toggle toggle-button center">
+                            <input class='tgl tgl-light' id='prescription-visibility' type='checkbox' {% if patient.prescription_visible %} checked {% endif %}>
+                            <label class='tgl-btn' for='prescription-visibility'></label>
+                        </div>
+                        <div class="privacy-content-item-content">
+                            <p><b>Your Prescriptions</b></p>
+                            <p>Your prescriptions are shared with other patients</p>
+                        </div>
+                    </div>
+                    <div class="privacy-content-item">
+                        <div class="privacy-toggle toggle-button center">
+                            <input class='tgl tgl-light' id='my-event-visibility' type='checkbox' {% if patient.my_event_visible %} checked {% endif %}>
+                            <label class='tgl-btn' for='my-event-visibility'></label>
+                        </div>
+                        <div class="privacy-content-item-content">
+                            <p><b>Your Events</b></p>
+                            <p>Your personal events are visible to other patients</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="privacy-progress center">
+                    <button class="progress-button progress-button-active" id="privacy-previous-2">Prev</button>
+                    <button class="progress-button progress-button-active" id="privacy-next-2">Done</button>
+                    <form id="token-gen" class="no-show">
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+            <div class="privacy-setting no-opacity center" id="privacy-setting-3">
+                <div class="privacy-content-check-icon">
+                    <span class="glyphicon glyphicon-ok vertical-center"></span>
+                </div>
+                <div class="privacy-all-set">
+                    <p><b>You're all set!</b></p>
+                </div>
+                <div class="privacy-change-later">
+                    <p>You can always come back and change these settings later.</p>
+                </div>
+                <button class="privacy-find-match">Find Your Patient Match</button>
+                <div class="privacy-progress center">
+                    <a id="privacy-previous-3">Go Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_script %}
+    <script type="text/javascript" src="{% static "js/nav.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/match.js" %}"></script>
+{% endblock %}

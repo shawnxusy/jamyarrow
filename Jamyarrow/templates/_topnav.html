@@ -1,0 +1,20 @@
+{% load staticfiles %}
+{% load app_tags %}
+
+<div class="top-nav center">
+    <div class="top-nav-greeting no-mobile">
+        <img id="patient-image-topnav" class="vertical-center" src="{% static 'img/profile-jane.png' %}">
+        <p class="capitalized white vertical-center title-font larger-1"><b>Good morning, {{ patient.name | firstname }}</b></p>
+    </div>
+    <div class="top-nav-quote no-mobile">
+        <p class="white vertical-center">“The struggle you’re in today is developing the strength you need tomorrow” - <i class="light italic smaller-1"> Anonymous</i></p>
+    </div>
+    <div class="top-nav-title vertical-center">
+        <h3 class="capitalized title-font white"><b>{% if timeline_active %}Timeline{% endif %}</b></h3>
+    </div>
+    <div class="notification">
+        <p class="notification-alert blue center"><span class="icon-alerts" id="alerts-icon"></span></p>
+        <div class="active-alerts">
+        </div>
+    </div>
+</div>

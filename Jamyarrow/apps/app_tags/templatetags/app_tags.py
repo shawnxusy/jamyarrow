@@ -26,3 +26,9 @@ def upper(value): # Only one argument.
 def firstname(value): # Only one argument.
     """Converts name to first name"""
     return value.split()[0]
+
+@register.filter(name='dateonly')
+@stringfilter
+def dateonly(value): # Only one argument.
+    """Converts name to first name"""
+    return value.split(",")[0]

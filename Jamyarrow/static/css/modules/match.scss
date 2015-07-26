@@ -1,0 +1,137 @@
+//main: ../styles.scss
+
+.match {
+    position: relative;
+    .privacy-setting {
+        margin: 50px 15% 0 15%;
+        background-color: $white;
+        border: 1px solid $subtle-grey;
+        color: $text-dark-grey;
+        position: absolute;
+        float: left;
+
+        .privacy-title {
+            padding: 15px 25px 10px 25px;
+            border-bottom: 1px solid $subtle-grey;
+        }
+
+        .privacy-content {
+            padding: 15px 25px 10px 25px;
+
+            .privacy-content-description {
+            }
+
+            .privacy-content-title {
+                padding-top: 10px;
+            }
+
+            .privacy-content-item {
+                padding: 10px 0;
+                clear: both;
+
+                .privacy-toggle {
+                    float: left;
+                    width: 15%;
+                    padding: 10px 0 0 5px;
+                }
+                .privacy-content-item-content {
+                    p {
+                        margin: 0;
+                    }
+                }
+                #privacy-timeline-content {
+                    float: left;
+                }
+                #privacy-timeline-preview {
+                    margin-bottom: 15px;
+                    background-color: #f9fafb;
+                    padding: 5px 15px;
+                    margin-left: 30px;
+                    position: relative;
+                    top: 5px;
+                    border: 1px solid $subtle-grey;
+                    font-weight: 600;
+                }
+            }
+
+            .privacy-content-separater {
+                border-bottom: 1px solid $subtle-grey;
+            }
+        }
+
+        .privacy-progress {
+            margin: 10px 0 20px 0;
+            .progress-button {
+                padding: 7px 25px;
+                &:active, &:checked, &:focus, &:link {
+                    outline: none;
+                }
+            }
+            .progress-button-disabled {
+                background-color: $white;
+                border: 1px solid $subtle-grey;
+                color: $divider-grey;
+            }
+            .progress-button-active {
+                background-color: $blue;
+                color: $white;
+                border: none;
+                &:hover, &:focus, &:active {
+                    background-color: $dark-blue;
+                }
+            }
+        }
+    }
+    #privacy-setting-2 {
+        left: 2000px;
+        #privacy-timeline-preview {
+            display: inline-block;
+            &:hover {
+                text-decoration: none;
+                color: inherit;
+                cursor: pointer;
+            }
+        }
+    }
+    #privacy-setting-3 {
+        left: 2000px;
+        padding: 50px 20% 30px 20%;
+        .privacy-content-check-icon {
+            margin: 0 auto;
+            width: 96px;
+            height: 96px;
+            @include border-radius(50%);
+            background-color: $grass-green;
+            span {
+                font-size: 2.5em;
+                color: $white;
+            }
+        }
+        .privacy-all-set {
+            margin-top: 30px;
+            font-size: 2em;
+        }
+        .privacy-change-later {
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+        .privacy-find-match {
+            font-size: 1.2em;
+            background-color: #f9fafb;
+            padding: 15px 35px;
+            border: 1px solid $subtle-grey;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        .privacy-progress {
+            margin-top: 20px;
+            #privacy-previous-3 {
+                text-decoration: underline;
+                &:hover {
+                    color: inherit;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

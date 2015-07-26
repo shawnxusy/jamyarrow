@@ -1,0 +1,54 @@
+//main: ../styles.scss
+
+.top-nav {
+    height: 70px;
+    padding: 5px 8%;
+    background-color: $blue;
+
+    @media (max-width: $screen-sm) {
+        height: 50px;
+    }
+
+    .top-nav-greeting {
+        height: 60px; // hack for vertical centering
+        float: left;
+        #patient-image-topnav {
+            width: 50px;
+            height: auto;
+            float: left;
+        }
+        p {
+            margin-left: 65px;
+        }
+    }
+
+    .top-nav-quote {
+        height: 60px;
+        margin-left: 50%;
+        padding-right: 10px;
+        width: 40%;
+
+        border-right: 1px solid $dark-blue;
+
+    }
+
+    .notification {
+        top: 15px;
+        right: 8%;
+
+        @media (max-width: $screen-sm) {
+            top: 7px;
+            right: 20px;
+        }
+
+        .notification-alert {
+            width: 36px;
+            height: 36px;
+            background-color: $white;
+            #alerts-icon {
+                font-size: 24px;
+                top: 4px;
+            }
+        }
+    }
+}

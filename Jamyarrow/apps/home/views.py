@@ -8,11 +8,11 @@ import json
 
 # Homepage
 def homepage(request):
-	context = {}
 
 	if not request.user.is_authenticated():
 		return redirect(reverse('login'))
 
+	context = {}
 	patient = Patient.objects.get(user=request.user)
 	context['patient'] = patient
 
@@ -59,20 +59,10 @@ def homepage(request):
 			ranked_tracked_items[c] = 1
 
 	sorted_list = sorted(ranked_tracked_items, key=ranked_tracked_items.get, reverse=True)
-	# template_list = []
-	# for i in sorted_list:
-	# 	if i.category == "SL":
-	# 		template_list.append("home/quicktrack/sleep.html")
-	# 	elif i.category == "AT":
-	# 		template_list.append("home/quicktrack/activity.html")
-	# 	elif i.category == "MD":
-	# 		template_list.append("home/quicktrack/mood.html")
-	# 	elif i.category == "SY":
-	# 		template_list.append("home/quicktrack/symptom.html")
-	# 	elif i.category == "ME":
-	# 		template_list.append("home/quicktrack/medication.html")
+
 
 	context['ranked_tracked_items'] = sorted_list
+	context['home_hamburger'] = "home-hamburger"
 	return render(request, 'home/index.html', context)
 
 
