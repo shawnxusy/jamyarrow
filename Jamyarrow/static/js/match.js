@@ -48,7 +48,7 @@ $(document).ready(function() {
 
     $("#privacy-next-2").on("click", function(e) {
         // Post to save the events
-        save_settings(e);
+        save_settings(e, true);
 
         $("#privacy-setting-2").animate({
             left: "-2000",
@@ -61,7 +61,7 @@ $(document).ready(function() {
     });
 
     $("#privacy-timeline-preview").on("click", function(e) {
-        save_settings(e);
+        save_settings(e, false);
         e.preventDefault();
         var previewURL = $(this).attr("href");
         setTimeout(function(){
@@ -69,7 +69,7 @@ $(document).ready(function() {
         }, 200);
     });
 
-    function save_settings(e) {
+    function save_settings(e, commit) {
         data = new FormData();
         data.append("profile_visible", $("#profile-visibility").prop("checked"));
         data.append("contact_visible", $("#contact-visibility").prop("checked"));
@@ -81,6 +81,7 @@ $(document).ready(function() {
         data.append("appointment_visible", $("#appointment-visibility").prop("checked"));
         data.append("prescription_visible", $("#prescription-visibility").prop("checked"));
         data.append("my_event_visible", $("#my-event-visibility").prop("checked"));
+        data.append("commit_change", commit);
 
         var csrftoken = $.cookie('csrftoken');
 
@@ -116,6 +117,50 @@ $(document).ready(function() {
             left: "2000",
             opacity: 0
         }, 200);
+    });
+
+    function changeSearchInput() {
+        var input = $("#match-search-input");
+        // Calculate the total width
+        var totalWidth = $(input).parent().width();
+        var totalTokenWidth = 0;
+        $(input).parent().find(".match-search-token-wrapper").each(function() {
+            totalTokenWidth += $(this).outerWidth();
+        });
+        $(input).css("width", (totalWidth - totalTokenWidth - 50) + "px");
+    }
+
+    $("#match-search-input").bind("keyup", function(e) {
+        var key = e.keyCode || e.which;
+        var len = $(this).val().length;
+
+        if (key == 32) {
+            if ($(this).val() === " ") {
+                console.log("haha");
+                $(this).val("");
+            }
+            else {
+                var wrapper = $("<div class='match-search-token-wrapper'><p>" + $(this).val().substring(0, len) + "<span class='glyphicon glyphicon-remove'></span></p></div>");
+                if ($(this).prev().length !== 0) {
+                    $(wrapper).insertAfter($(this).prev());
+                }
+                else {
+                    $(this).parent().prepend($(wrapper));
+                }
+                $(this).val("");
+                changeSearchInput();
+            }
+        }
+        if (((key == 46) || (key == 8)) && ($(this).val() === "")) {
+            $(this).prev().remove();
+            changeSearchInput();
+        }
+    });
+
+    $(".match-search").on("click", ".glyphicon-remove", function(){
+        $(this).parent().parent().remove();
+        // Expand the search to fit remaining area
+        changeSearchInput();
     });
 
 });

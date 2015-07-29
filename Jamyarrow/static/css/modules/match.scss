@@ -122,6 +122,12 @@
             border: 1px solid $subtle-grey;
             margin-top: 20px;
             font-weight: 600;
+            display: block;
+            &:hover {
+                text-decoration: none;
+                cursor: pointer;
+                color: inherit;
+            }
         }
         .privacy-progress {
             margin-top: 20px;
@@ -133,5 +139,76 @@
                 }
             }
         }
+    }
+
+    .match-search {
+        margin: 50px 15% 0 15%;
+        color: $text-dark-grey;
+        overflow: hidden;
+        .match-search-wrapper {
+            width: 85%;
+            float: left;
+            background-color: $white;
+            border: 2px solid $subtle-grey;
+            padding: 5px 15px;
+            position: relative;
+            .match-search-token-wrapper {
+                float: left;
+                padding: 10px 15px;
+                border: 1px solid $subtle-grey;
+                margin-right: 10px;
+                p {
+                    margin: 0;
+                    font-weight: 600;
+                }
+                span {
+                    margin-left: 5px;
+                    position: relative;
+                    top: 2px;
+                    color: $divider-grey;
+                    cursor: pointer;
+                }
+            }
+            #match-search-input {
+                border: none;
+                padding: 10px 0;
+                font-size: 1.2em;
+                width: 35%;
+                &:active, &:checked, &:focus, &:link {
+                    outline: none;
+                }
+            }
+            .search-icon {
+                position: absolute;
+                right: 25px;
+                top: 17px;
+                font-size: 1.5em;
+                color: $subtle-grey;
+                cursor: pointer;
+            }
+        }
+        .match-search-advanced {
+            width: 15%;
+            float: left;
+            background-color: $white;
+            border: 1px solid $subtle-grey;
+            height: 58px;
+            font-weight: 600;
+            cursor: pointer;
+            p {
+                span {
+                    color: $divider-grey;
+                    margin-left: 3px;
+                    position: relative;
+                    top: 2px;
+                }
+            }
+        }
+    }
+
+    .match-result {
+        clear: both;
+        color: $text-dark-grey;
+        margin: 30px 15% 0 15%;
     }
 }

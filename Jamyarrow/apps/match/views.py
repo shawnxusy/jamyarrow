@@ -24,6 +24,8 @@ def match(request):
     else:
         return render(request, 'match/main.html', context)
 
+def match_strict(request):
+    return match(request)
 
 def save_settings(request):
     context = {}
@@ -40,6 +42,7 @@ def save_settings(request):
     patient.appointment_visible = True if request.POST['appointment_visible'] == "true" else False
     patient.prescription_visible = True if request.POST['prescription_visible'] == "true" else False
     patient.my_event_visible = True if request.POST['my_event_visible'] == "true" else False
+    patient.case_match_tour = True if request.POST['commit_change'] == "true" else False
 
     patient.save()
     data["success"] = "success"
@@ -72,3 +75,12 @@ def view_timeline(request, user_id):
     context['events'] = visible_events
 
     return render(request, 'match/timeline_template.html', context)
+
+def reset_privacy(request):
+    context = {}
+    patient = Patient.objects.get(user=request.user)
+    context['patient'] = patient
+
+    patient.case_match_tour = False
+    patient.save()
+    return redirect(reverse('match'))

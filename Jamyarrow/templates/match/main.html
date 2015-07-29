@@ -13,7 +13,59 @@
     <div class="container">
         {% include "_topnav.html" %}
         <div class="match">
-            Holaa!
+            <div class="match-search">
+                <div class="match-search-wrapper">
+                    <div class="match-search-token-wrapper">
+                        <p>Lung Cancer: Stage II<span class="glyphicon glyphicon-remove"></span></p>
+                    </div>
+                    <div class="match-search-token-wrapper">
+                        <p>Age: 50 - 60<span class="glyphicon glyphicon-remove"></span></p>
+                    </div>
+                    <input id="match-search-input">
+                    <span class="glyphicon glyphicon-search search-icon"></span>
+                </div>
+                <div class="match-search-advanced center">
+                    <p class="vertical-center text-mild-grey">Advanced<span class="glyphicon glyphicon-chevron-down"></span></p>
+                </div>
+            </div>
+            <div class="match-result">
+                <div class="match-result-title">
+                    <p>There are 6 cancer patients like you at this hospital</p>
+                </div>
+                <div class="match-result-content">
+                    <div class="match-result-item">
+                        <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
+                        <p class="match-result-item-title">johnesco<span class="glyphicon glyphicon-envelope"></span></p>
+                        <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
+                    </div>
+                    <div class="match-result-item">
+                        <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
+                        <p class="match-result-item-title">johnesco<span class="glyphicon glyphicon-envelope"></span></p>
+                        <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
+                    </div>
+                    <div class="match-result-item">
+                        <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
+                        <p class="match-result-item-title">johnesco<span class="glyphicon glyphicon-envelope"></span></p>
+                        <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
+                    </div>
+                    <div class="match-result-item">
+                        <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
+                        <p class="match-result-item-title">johnesco<span class="glyphicon glyphicon-envelope"></span></p>
+                        <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
+                    </div>
+                    <div class="match-result-item">
+                        <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
+                        <p class="match-result-item-title">johnesco<span class="glyphicon glyphicon-envelope"></span></p>
+                        <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
+                    </div>
+                    <div class="match-result-item">
+                        <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
+                        <p class="match-result-item-title">johnesco<span class="glyphicon glyphicon-envelope"></span></p>
+                        <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
+                    </div>
+                </div>
+            </div>
+            <a href="{% url 'reset_privacy' %}">Reset your privacy</a>
         </div>
     </div>
 {% endblock %}

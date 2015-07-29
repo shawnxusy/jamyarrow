@@ -27,10 +27,10 @@ class UserSignupForm(forms.Form):
 		attrs={'class': 'form-control', 'placeholder': 'Confirm your password', 'required': ''}))
 	phone = forms.CharField(max_length=20, widget=TextInput(
 		attrs={'placeholder': '(###) ###-####', 'class': 'form-control', 'required': ''}))
-
 	cancer_type = forms.ChoiceField(choices=Patient.CANCER_TYPES)
 	cancer_stage = forms.IntegerField(max_value=4)
-	
+	age = forms.IntegerField(max_value=200)
+
 
 	def clean(self):
 		# Calls our parent (forms.Form) .clean function, gets a dictionary
@@ -60,7 +60,7 @@ class UserSignupForm(forms.Form):
 
 	def clean_email(self):
 		email = self.cleaned_data.get('email')
-	
+
 		if len(User.objects.filter(email__iexact=email)) > 0:
 			raise forms.ValidationError('Email is already registered.')
 		return email
