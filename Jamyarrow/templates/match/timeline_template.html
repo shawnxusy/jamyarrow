@@ -73,11 +73,21 @@
                     <div class="timeline-content-mobile-filter no-desktop">
                         <select class="timeline-content-mobile-filter-list">
                             <option class="timeline-filter-all selected">View All</option>
-                            <option class="timeline-filter-milestone">Milestone</option>
+                            {% if target.milestone_visible %}
+                            <option class="timeline-filter-milestone">Key Events</option>
+                            {% endif %}
+                            {% if target.test_result_visible %}
                             <option class="timeline-filter-test-result">Test Result</option>
+                            {% endif %}
+                            {% if target.appointment_visible %}
                             <option class="timeline-filter-appointment">Appointment</option>
+                            {% endif %}
+                            {% if target.prescription_visible %}
                             <option class="timeline-filter-prescription">Prescription</option>
+                            {% endif %}
+                            {% if target.my_event_visible %}
                             <option class="timeline-filter-my-event">My Event</option>
+                            {% endif %}
                         </select>
                         <div class="timeline-content-filter-search">
                             <input type="text" placeholder="Other" class="no-show">
@@ -132,11 +142,21 @@
                         <p class="larger-0">View by:</p>
                         <div class="timeline-content-filter-list">
                             <button class="timeline-filter-all active">View All</button>
+                            {% if target.milestone_visible %}
                             <button class="timeline-filter-milestone">Milestone</button>
+                            {% endif %}
+                            {% if target.test_result_visible %}
                             <button class="timeline-filter-test-result">Test Result</button>
+                            {% endif %}
+                            {% if target.appointment_visible %}
                             <button class="timeline-filter-appointment">Appointment</button>
+                            {% endif %}
+                            {% if target.prescription_visible %}
                             <button class="timeline-filter-prescription">Prescription</button>
+                            {% endif %}
+                            {% if target.my_event_visible %}
                             <button class="timeline-filter-my-event">My Event</button>
+                            {% endif %}
                             <div class="timeline-content-filter-search">
                                 <input type="text" placeholder="Other">
                                 <span class="timeline-content-filter-search-icon">

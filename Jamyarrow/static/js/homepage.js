@@ -10,28 +10,52 @@ $(document).ready(function() {
     $("#quicktrack-submit-0, #quicktrack-submit-1, #quicktrack-submit-2").on("click", function(e) {
         e.preventDefault();
         var form = $(this).parent();
-		$.ajax({
-			type: "POST",
-			url: window.location.pathname + "add_track_entry/" + $(form).find(".tracked-item-id").val(),
-			data: {
-                severity: $(form).find(".input-severity:checked").val() || 0,
-                duration: $(form).find(".input-duration").val() || 0,
-                quality: $(form).find(".input-quality:checked").val() || 0,
-                quantity: $(form).find(".input-quantity").val() || 0,
-                yes_no: $(form).find(".input-yes-no").val() || 0,
-                note: $(form).find(".input-note").val() || "",
-                csrfmiddlewaretoken: $(form).find(".tracked-item-id").next().val()
-			},
-			success: function(data) {
-                console.log(data);
-			},
-			error: function(xhr) {
-				console.log("error occurred");
-				console.log(xhr.statusText);
-				console.log(xhr.responseText);
-			}
-		});
+        var formName = $(form).parent().attr("id").split("-")[1];
+        var originalID = $(form).find(".tracked-item-id").val();
+        if ((($(form).find(".input-quality").length !== 0) && ($(form).find(".input-quality:checked").length === 0)) || (($(form).find(".input-severity").length !== 0) && ($(form).find(".input-severity:checked").length === 0))) {
+            console.log("subm");
+            $(form).append($("<span class='quicktrack-submit-error'>You need to select a scale</span>"));
+            $(".quicktrack-submit-error").animate({
+                opacity: 0,
+            }, 3000, function(){
+                $(this).remove();
+            });
+        }
+        else {
+    		$.ajax({
+    			type: "POST",
+    			url: window.location.pathname + "add_track_entry/" + originalID,
+    			data: {
+                    severity: $(form).find(".input-severity:checked").val() || 0,
+                    duration: $(form).find(".input-duration").val() || 0,
+                    quality: $(form).find(".input-quality:checked").val() || 0,
+                    quantity: $(form).find(".input-quantity").val() || 0,
+                    yes_no: $(form).find(".input-yes-no").val() || 0,
+                    note: $(form).find(".input-note").val() || "",
+                    csrfmiddlewaretoken: $(form).find(".tracked-item-id").next().val()
+    			},
+    			success: function(data) {
+                    console.log(data);
+                    $(form).find(".tracked-item-id").attr("value", parseInt(originalID) + 1);
+                    $(form).hide();
+                    var confirmDiv = $("<div class='quicktrack-confirmation center'><div class='quicktrack-confirmation-tick'><span class='glyphicon glyphicon-ok vertical-center'></span></div><p class='quicktrack-confirmation-text'>You've logged your " + formName + "!</p><p id='quicktrack-confirmation-link'>Log another entry</p></div>");
+                    $(form).parent().append($(confirmDiv));
+    			},
+    			error: function(xhr) {
+    				console.log("error occurred");
+    				console.log(xhr.statusText);
+    				console.log(xhr.responseText);
+    			}
+    		});
+        }
+    });
 
+    $(".quicktrack-tabs-content").on("click", "#quicktrack-confirmation-link", function() {
+        var form = $(this).parent().prev();
+        $(form).show();
+        $(this).parent().remove();
+        $(form).find("textarea").val("");
+        $(form).find("input:checked").prop("checked", false);
     });
 
     $(".hero-greeting-quote").on("click", "#edit-quote", function() {
@@ -46,6 +70,7 @@ $(document).ready(function() {
         $(parent).append(inputAuthor);
         $(parent).append(submit);
     });
+
 
 
     $(".hero-greeting-quote").on("click", "#hero-greeting-quote-submit", submitQuote);
@@ -107,9 +132,51 @@ $(document).ready(function() {
         }
         $(this).parent().prev().text(new_display);
     });
+
+    $(".tips-content-block").on("click", ".glyphicon-thumbs-up", function(e) {
+        e.preventDefault();
+        $(this).toggleClass("divider-grey").toggleClass("grass-green");
+    });
+
+    $(".tips-content-block").on("click", ".glyphicon-thumbs-down", function(e) {
+        e.preventDefault();
+        var originalQuote = $(this).parent().prev().text();
+        var newQuote = tipsBase[Math.floor(Math.random() * tipsBase.length)];
+        while (newQuote == originalQuote) {
+            newQuote = tipsBase[Math.floor(Math.random() * tipsBase.length)];
+        }
+        if (!isMobile) {
+            $(this).parent().parent().animate({
+                bottom: -800,
+            }, 300, function() {
+                $(this).css("bottom", 0);
+                $(this).find(".tips-content-content").text(newQuote);
+            });
+        } else {
+            $(this).parent().parent().animate({
+                left: -800,
+            }, 300, function() {
+                $(this).css("left", 0);
+                $(this).find(".tips-content-content").text(newQuote);
+            });
+        }
+    });
 });
 
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
+
+tipsBase = [
+    "Having more water would help you recover from side effects of chemotherapy.",
+    "An apple after lunch and dinner is magic to your recovery.",
+    "Your symptoms may fluctuate from time to time, keeping good record of them will help you and your doctor.",
+    "Great quality sleep is key to fighting cancer, try some nice music before sleep!",
+    "It is very helpful to spend half an hour every day outside, even just sitting on a bench in a park.",
+    "A call with an old friend is sometimes more effective than a hundred-dollar drug",
+    "Exercising does not necessarily need to take place in a gym. Try something on bed, floor, or in a park.",
+    "Take deep breaths when you feel dizzy or having a panic attack. Do not get too nervous, try to reach out to your caretaker",
+    "Keeping a diary on events that happened is a great way to calm your mind and prepare for a high quality sleep",
+    "While you may experience poor sleeps, you can always try to make with a good afternoon nap."
+];

@@ -296,6 +296,21 @@ h5, .h5 {
 .orange {
   color: #ffc600; }
 
+.measure-green {
+  color: #45de4f; }
+
+.measure-lightgreen {
+  color: #d2f20d; }
+
+.measure-yellow {
+  color: #f5e83b; }
+
+.measure-orange {
+  color: #f6b23e; }
+
+.measure-red {
+  color: #f66f2c; }
+
 .navig {
   width: 120px;
   min-height: 795px;
@@ -638,6 +653,9 @@ h5, .h5 {
     border: 1px solid #ededed;
     padding: 0;
     display: block; }
+    @media (max-width: 420px) {
+      .content .quicktrack {
+        margin-top: 20px; } }
     .content .quicktrack .quicktrack-title-head {
       background-color: #298acc;
       height: 60px;
@@ -645,6 +663,31 @@ h5, .h5 {
       width: 34%; }
       .content .quicktrack .quicktrack-title-head p {
         font-size: 1.15em; }
+      @media (max-width: 420px) {
+        .content .quicktrack .quicktrack-title-head {
+          width: 100%; }
+          .content .quicktrack .quicktrack-title-head p {
+            font-size: 1.4em; }
+            .content .quicktrack .quicktrack-title-head p:before {
+              content: "\e611";
+              font-size: 16px;
+              margin-right: 8px;
+              font-family: 'icomoon';
+              speak: none;
+              font-style: normal;
+              font-weight: normal;
+              font-variant: normal;
+              text-transform: none;
+              line-height: 1;
+              position: relative;
+              top: 0; } }
+    @media (max-width: 420px) {
+      .content .quicktrack #quicktrack-tabs {
+        clear: both; } }
+    @media (max-width: 420px) {
+      .content .quicktrack #quicktrack-tabs li {
+        float: left;
+        width: 33.33334%; } }
     .content .quicktrack #quicktrack-tabs li a {
       height: 60px;
       font-size: 1.15em;
@@ -652,6 +695,10 @@ h5, .h5 {
       color: #105989;
       border: none;
       border-radius: inherit; }
+      @media (max-width: 420px) {
+        .content .quicktrack #quicktrack-tabs li a {
+          background-color: #ededed;
+          color: #626060; } }
     .content .quicktrack #quicktrack-tabs li.active a {
       color: white; }
       .content .quicktrack #quicktrack-tabs li.active a:after {
@@ -665,17 +712,27 @@ h5, .h5 {
         margin-left: -10px;
         position: absolute;
         bottom: 0; }
+      @media (max-width: 420px) {
+        .content .quicktrack #quicktrack-tabs li.active a {
+          background-color: #dcdcdf;
+          color: #626060; } }
     .content .quicktrack .quicktrack-tabs-content .form-legend {
       margin-top: 20px; }
+      @media (max-width: 420px) {
+        .content .quicktrack .quicktrack-tabs-content .form-legend {
+          font-size: 1.3em; } }
     .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality-label {
       margin: 20px 0 -10px 0; }
-    .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality {
+      @media (max-width: 420px) {
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality-label {
+          font-size: 1.3em; } }
+    .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity {
       margin-top: 20px; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity .radio-button-left-circle, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality .radio-button-left-circle {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity .radio-button-left-circle {
         display: none; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity .radio-button-right-circle, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality .radio-button-right-circle {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity .radio-button-right-circle {
         display: none; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label {
         display: inline-block;
         cursor: pointer;
         position: relative;
@@ -690,7 +747,10 @@ h5, .h5 {
         -ms-border-radius: 25px;
         -o-border-radius: 25px;
         border-radius: 25px; }
-        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:before {
+        @media (max-width: 420px) {
+          .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label {
+            padding: 5px 10px; } }
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:before {
           content: "";
           display: inline-block;
           width: 10px;
@@ -699,59 +759,124 @@ h5, .h5 {
           background-color: #ffffff;
           bottom: 16px;
           border-radius: 5px; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(2):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(1):checked + label, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(2):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(1):checked + label {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(2):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(1):checked + label {
         background-color: #45de4f;
         color: #ffffff; }
-        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(2):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(1):checked + label:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(2):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(1):checked + label:before {
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(2):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(1):checked + label:before {
           background-color: #ffffff; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(2):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(2):hover {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(2):hover {
         background-color: #24cc2f; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(2):before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(2):before {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(2):before {
         background-color: #45de4f; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(4):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(3):checked + label, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(4):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(3):checked + label {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(4):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(3):checked + label {
         background-color: #d2f20d;
         color: #ffffff; }
-        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(4):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(3):checked + label:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(4):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(3):checked + label:before {
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(4):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(3):checked + label:before {
           background-color: #ffffff; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(4):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(4):hover {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(4):hover {
         background-color: #bdda0c; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(4):before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(4):before {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(4):before {
         background-color: #d2f20d; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(6):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(5):checked + label, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(6):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(5):checked + label {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(6):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(5):checked + label {
         background-color: #f5e83b;
         color: #ffffff; }
-        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(6):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(5):checked + label:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(6):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(5):checked + label:before {
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(6):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(5):checked + label:before {
           background-color: #ffffff; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(6):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(6):hover {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(6):hover {
         background-color: #f1e10c; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(6):before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(6):before {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(6):before {
         background-color: #f5e83b; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(8):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(7):checked + label, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(8):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(7):checked + label {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(8):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(7):checked + label {
         background-color: #f6b23e;
         color: #ffffff; }
-        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(8):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(7):checked + label:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(8):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(7):checked + label:before {
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(8):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(7):checked + label:before {
           background-color: #ffffff; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(8):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(8):hover {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(8):hover {
         background-color: #f49f0d; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(8):before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(8):before {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(8):before {
         background-color: #f6b23e; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(10):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(9):checked + label, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(10):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(9):checked + label {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(10):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(9):checked + label {
         background-color: #f66f2c;
         color: #ffffff; }
-        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(10):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(9):checked + label:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(10):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(9):checked + label:before {
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(10):hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio]:nth-child(9):checked + label:before {
           background-color: #ffffff; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(10):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(10):hover {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(10):hover {
         background-color: #e5530a; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(10):before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(10):before {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:nth-child(10):before {
         background-color: #f66f2c; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:hover:before, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:hover:before {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity label:hover:before {
         background-color: #ffffff; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio], .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio] {
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-severity input[type=radio] {
+        display: none; }
+    .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality {
+      margin-top: 20px; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label {
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        width: 48px;
+        height: 48px;
+        margin: 0 5px;
+        font-size: 2.2em;
+        -webkit-border-radius: 50%;
+        -khtml-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        border-radius: 50%; }
+        @media (max-width: 420px) {
+          .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label {
+            padding: 0;
+            margin: 0 5px;
+            width: 42px;
+            height: 42px; } }
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label span {
+          position: relative;
+          top: 4px; }
+          @media (max-width: 420px) {
+            .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label span {
+              top: 5px; } }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(2):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(1):checked + label {
+        background-color: #45de4f; }
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(2):hover span, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(1):checked + label span {
+          color: #ffffff; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(2):hover {
+        background-color: #24cc2f; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(4):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(3):checked + label {
+        background-color: #d2f20d; }
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(4):hover span, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(3):checked + label span {
+          color: #ffffff; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(4):hover {
+        background-color: #bdda0c; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(6):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(5):checked + label {
+        background-color: #f5e83b; }
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(6):hover span, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(5):checked + label span {
+          color: #ffffff; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(6):hover {
+        background-color: #f1e10c; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(8):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(7):checked + label {
+        background-color: #f6b23e; }
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(8):hover span, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(7):checked + label span {
+          color: #ffffff; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(8):hover {
+        background-color: #f49f0d; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(10):hover, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(9):checked + label {
+        background-color: #f66f2c; }
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(10):hover span, .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio]:nth-child(9):checked + label span {
+          color: #ffffff; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:nth-child(10):hover {
+        background-color: #e5530a; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality label:hover:before {
+        background-color: #ffffff; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-quality input[type=radio] {
         display: none; }
     .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration {
       margin-top: 20px; }
       .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration label {
         font-weight: normal; }
+        @media (max-width: 420px) {
+          .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration label {
+            font-size: 1.3em; } }
       .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration #quicktrack-form-duration-display {
         display: inline;
         margin-left: 20px;
@@ -768,6 +893,9 @@ h5, .h5 {
           width: 60%;
           margin: 0 5%;
           bottom: 2px; }
+          @media (max-width: 420px) {
+            .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content #quicktrack-form-duration {
+              width: 90%; } }
         .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range] {
           -webkit-appearance: none; }
           .content .quicktrack .quicktrack-tabs-content .quicktrack-form-duration .quicktrack-form-duration-content input[type=range]:focus {
@@ -838,12 +966,18 @@ h5, .h5 {
       margin-top: 20px; }
       .content .quicktrack .quicktrack-tabs-content .quicktrack-form-note label {
         font-weight: normal; }
-      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-note #quicktrack-form-note {
+        @media (max-width: 420px) {
+          .content .quicktrack .quicktrack-tabs-content .quicktrack-form-note label {
+            font-size: 1.3em; } }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-form-note .input-note {
         display: block;
         width: 60%;
         margin: 0 auto;
         border: 1px solid #ced0cd;
         min-height: 80px; }
+        @media (max-width: 420px) {
+          .content .quicktrack .quicktrack-tabs-content .quicktrack-form-note .input-note {
+            width: 90%; } }
     .content .quicktrack .quicktrack-tabs-content .quicktrack-submit {
       padding: 10px 40px;
       background-color: #2e97de;
@@ -855,11 +989,53 @@ h5, .h5 {
       -ms-border-radius: 5px;
       -o-border-radius: 5px;
       border-radius: 5px; }
+      @media (max-width: 420px) {
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-submit {
+          font-size: 1.2em; } }
+    .content .quicktrack .quicktrack-tabs-content .quicktrack-submit-error {
+      color: #ee423d;
+      position: absolute;
+      margin-top: 30px;
+      margin-left: 15px; }
+      @media (max-width: 420px) {
+        .content .quicktrack .quicktrack-tabs-content .quicktrack-submit-error {
+          position: inherit;
+          margin-top: inherit; } }
     .content .quicktrack .quicktrack-tabs-content #quicktrack-mood form .form-legend p .quicktrack-general-question {
       display: none; }
     .content .quicktrack .quicktrack-tabs-content #quicktrack-mood form .form-legend p:before {
       content: "How are you feeling,";
       font-style: italic; }
+    .content .quicktrack .quicktrack-tabs-content .quicktrack-confirmation {
+      padding: 40px 20%; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-confirmation .quicktrack-confirmation-tick {
+        font-size: 2em;
+        height: 64px;
+        width: 64px;
+        -webkit-border-radius: 50%;
+        -khtml-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        border-radius: 50%;
+        background-color: #abd25e;
+        color: #ffffff;
+        margin: 0 auto; }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-confirmation .quicktrack-confirmation-text {
+        margin-top: 25px;
+        font-size: 1.2em;
+        font-weight: 600; }
+        @media (max-width: 420px) {
+          .content .quicktrack .quicktrack-tabs-content .quicktrack-confirmation .quicktrack-confirmation-text {
+            font-size: 1.3em; } }
+      .content .quicktrack .quicktrack-tabs-content .quicktrack-confirmation #quicktrack-confirmation-link {
+        margin-top: 10px;
+        color: #626060;
+        text-decoration: underline;
+        cursor: pointer; }
+        @media (max-width: 420px) {
+          .content .quicktrack .quicktrack-tabs-content .quicktrack-confirmation #quicktrack-confirmation-link {
+            font-size: 1.3em; } }
 
 .tips {
   background-color: #ffffff;
@@ -911,8 +1087,16 @@ h5, .h5 {
   .tips .tips-content {
     margin: 0;
     padding: 20px 15px; }
+    @media (max-width: 420px) {
+      .tips .tips-content {
+        padding: 20px 5px; } }
     .tips .tips-content .tips-content-block {
       padding: 0 15px; }
+      @media (max-width: 420px) {
+        .tips .tips-content .tips-content-block {
+          clear: both;
+          overflow: hidden;
+          margin: 10px 0; } }
       .tips .tips-content .tips-content-block .tips-content-number {
         float: left;
         background-color: #abd25e;
@@ -937,10 +1121,23 @@ h5, .h5 {
       .tips .tips-content .tips-content-block #tips-content-number-1::before {
         border-left: none; }
       .tips .tips-content .tips-content-block .tips-content-content {
-        margin-left: 45px; }
+        margin-left: 15px;
+        float: left;
+        width: 70%; }
         @media (max-width: 420px) {
           .tips .tips-content .tips-content-block .tips-content-content {
             font-size: 1.3em; } }
+      .tips .tips-content .tips-content-block .tips-content-thumbs {
+        width: 10%;
+        float: right; }
+        .tips .tips-content .tips-content-block .tips-content-thumbs span {
+          display: block;
+          margin-bottom: 10px;
+          font-size: 1.3em;
+          cursor: pointer; }
+          @media (max-width: 420px) {
+            .tips .tips-content .tips-content-block .tips-content-thumbs span {
+              font-size: 1.8em; } }
 
 .top-nav {
   height: 70px;

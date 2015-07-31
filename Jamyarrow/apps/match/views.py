@@ -20,6 +20,7 @@ def match(request):
 
     patient = Patient.objects.get(user=request.user)
     context['patient'] = patient
+    context['patient_match_active'] = True
 
     if not patient.case_match_tour:
         return render(request, 'match/privacy_setting.html', context)
@@ -107,6 +108,7 @@ def view_timeline(request, user_id):
             visible_events.append(event)
 
     context['events'] = visible_events
+    context['patient_match_active'] = True
 
     return render(request, 'match/timeline_template.html', context)
 

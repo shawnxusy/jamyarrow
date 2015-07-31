@@ -222,7 +222,6 @@
                     }
                     .appointments-item-time {
                         text-align: left;
-                        // border-top: 1px solid lighten($divider-grey, 5%);
                         background-color: darken($background-grey, 3%);
                         color: $neutral-grey;
                         padding: 5px 10px;
@@ -280,6 +279,9 @@
         border: 1px solid $subtle-grey;
         padding: 0;
         display: block;
+        @media (max-width: $screen-sm) {
+            margin-top: 20px;
+        }
 
         .quicktrack-title-head {
             background-color: $dark-blue;
@@ -289,10 +291,37 @@
             p {
               font-size: 1.15em;
             }
+            @media (max-width: $screen-sm) {
+                width: 100%;
+                p {
+                    font-size: 1.4em;
+                    &:before {
+                        content: "\e611";
+                        font-size: 16px;
+                        margin-right: 8px;
+                        font-family: 'icomoon';
+                        speak: none;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-variant: normal;
+                        text-transform: none;
+                        line-height: 1;
+                        position: relative;
+                        top: 0;
+                    }
+                }
+            }
         }
 
         #quicktrack-tabs {
+            @media (max-width: $screen-sm) {
+                clear: both;
+            }
             li {
+                @media (max-width: $screen-sm) {
+                    float: left;
+                    width: 33.33334%;
+                }
                 a {
                     height: 60px;
                     font-size: 1.15em;
@@ -300,6 +329,10 @@
                     color: $darker-blue;
                     border: none;
                     border-radius: inherit;
+                    @media (max-width: $screen-sm) {
+                        background-color: #ededed;
+                        color: $text-mild-grey;
+                    }
                 }
                 &.active a {
                     color: white;
@@ -315,6 +348,10 @@
                         position: absolute;
                         bottom: 0;
                     }
+                    @media (max-width: $screen-sm) {
+                        background-color: #dcdcdf;
+                        color: $text-mild-grey;
+                    }
                 }
             }
         }
@@ -322,11 +359,17 @@
         .quicktrack-tabs-content {
             .form-legend {
                 margin-top: 20px;
+                @media (max-width: $screen-sm) {
+                    font-size: 1.3em;
+                }
             }
             .quicktrack-form-quality-label {
                 margin: 20px 0 -10px 0;
+                @media (max-width: $screen-sm) {
+                    font-size: 1.3em;
+                }
             }
-            .quicktrack-form-severity, .quicktrack-form-quality {
+            .quicktrack-form-severity {
                 margin-top: 20px;
                 .radio-button-left-circle {
                     display: none;
@@ -344,6 +387,9 @@
                     font-weight: bold;
                     background-color: lighten($subtle-grey, 3%);
                     @include border-radius(25px);
+                    @media (max-width: $screen-sm) {
+                        padding: 5px 10px;
+                    }
 
                     &:before {
                         content: "";
@@ -436,10 +482,100 @@
                 }
             }
 
+            .quicktrack-form-quality {
+                margin-top: 20px;
+
+                label {
+                    display: inline-block;
+                    cursor: pointer;
+                    position: relative;
+                    width: 48px;
+                    height: 48px;
+                    margin: 0 5px;
+                    font-size: 2.2em;
+                    @include border-radius(50%);
+                    @media (max-width: $screen-sm) {
+                        padding: 0;
+                        margin: 0 5px;
+                        width: 42px;
+                        height: 42px;
+                    }
+                    span {
+                        position: relative;
+                        top: 4px;
+                        @media (max-width: $screen-sm) {
+                            top: 5px;
+                        }
+                    }
+                }
+                label:nth-child(2):hover, input[type=radio]:nth-child(1):checked + label {
+                    background-color: $measure-green;
+                    span {
+                        color: $white;
+                    }
+                }
+                label:nth-child(2):hover {
+                    background-color: darken($measure-green, 10%);
+                }
+
+                label:nth-child(4):hover, input[type=radio]:nth-child(3):checked + label {
+                    background-color: $measure-lightgreen;
+                    span {
+                        color: $white;
+                    }
+                }
+                label:nth-child(4):hover {
+                    background-color: darken($measure-lightgreen, 5%);
+                }
+
+                label:nth-child(6):hover, input[type=radio]:nth-child(5):checked + label {
+                    background-color: $measure-yellow;
+                    span {
+                        color: $white;
+                    }
+                }
+                label:nth-child(6):hover {
+                    background-color: darken($measure-yellow, 10%);
+                }
+
+                label:nth-child(8):hover, input[type=radio]:nth-child(7):checked + label {
+                    background-color: $measure-orange;
+                    span {
+                        color: $white;
+                    }
+                }
+                label:nth-child(8):hover {
+                    background-color: darken($measure-orange, 10%);
+                }
+
+                label:nth-child(10):hover, input[type=radio]:nth-child(9):checked + label {
+                    background-color: $measure-red;
+                    span {
+                        color: $white;
+                    }
+                }
+                label:nth-child(10):hover {
+                    background-color: darken($measure-red, 10%);
+                }
+
+                label:hover {
+                    &:before {
+                        background-color: $white;
+                    }
+                }
+                input[type=radio] {
+                    display: none;
+                }
+            }
+
+
             .quicktrack-form-duration {
                 margin-top: 20px;
                 label {
                     font-weight: normal;
+                    @media (max-width: $screen-sm) {
+                        font-size: 1.3em;
+                    }
                 }
                 #quicktrack-form-duration-display {
                     display: inline;
@@ -459,6 +595,9 @@
                         width: 60%;
                         margin: 0 5%;
                         bottom: 2px;
+                        @media (max-width: $screen-sm) {
+                            width: 90%;
+                        }
                     }
 
                     input[type=range] {
@@ -530,13 +669,19 @@
                 margin-top: 20px;
                 label {
                     font-weight: normal;
+                    @media (max-width: $screen-sm) {
+                        font-size: 1.3em;
+                    }
                 }
-                #quicktrack-form-note {
+                .input-note {
                     display: block;
                     width: 60%;
                     margin: 0 auto;
                     border: 1px solid $divider-grey;
                     min-height: 80px;
+                    @media (max-width: $screen-sm) {
+                        width: 90%;
+                    }
                 }
             }
 
@@ -546,6 +691,20 @@
                 border: none;
                 margin: 20px 0 15px 0;
                 @include border-radius(5px);
+                @media (max-width: $screen-sm) {
+                    font-size: 1.2em;
+                }
+            }
+
+            .quicktrack-submit-error {
+                color: #ee423d;
+                position: absolute;
+                margin-top: 30px;
+                margin-left: 15px;
+                @media (max-width: $screen-sm) {
+                    position: inherit;
+                    margin-top: inherit;
+                }
             }
 
             // Designed questions
@@ -556,6 +715,36 @@
                 &:before {
                     content: "How are you feeling,";
                     font-style: italic;
+                }
+            }
+
+            .quicktrack-confirmation {
+                padding: 40px 20%;
+                .quicktrack-confirmation-tick {
+                    font-size: 2em;
+                    height: 64px;
+                    width: 64px;
+                    @include border-radius(50%);
+                    background-color: $grass-green;
+                    color: $white;
+                    margin: 0 auto;
+                }
+                .quicktrack-confirmation-text {
+                    margin-top: 25px;
+                    font-size: 1.2em;
+                    font-weight: 600;
+                    @media (max-width: $screen-sm) {
+                        font-size: 1.3em;
+                    }
+                }
+                #quicktrack-confirmation-link {
+                    margin-top: 10px;
+                    color: $text-mild-grey;
+                    text-decoration: underline;
+                    cursor: pointer;
+                    @media (max-width: $screen-sm) {
+                        font-size: 1.3em;
+                    }
                 }
             }
         }
@@ -619,8 +808,16 @@
     .tips-content {
         margin: 0;
         padding: 20px 15px;
+        @media (max-width: $screen-sm) {
+            padding: 20px 5px;
+        }
         .tips-content-block {
             padding: 0 15px;
+            @media (max-width: $screen-sm) {
+                clear: both;
+                overflow: hidden;
+                margin: 10px 0;
+            }
 
             .tips-content-number {
                 float: left;
@@ -646,9 +843,24 @@
                 border-left: none;
             }
             .tips-content-content {
-                margin-left: 45px;
+                margin-left: 15px;
+                float: left;
+                width: 70%;
                 @media (max-width: $screen-sm) {
                     font-size: 1.3em;
+                }
+            }
+            .tips-content-thumbs {
+                width: 10%;
+                float: right;
+                span {
+                    display: block;
+                    margin-bottom: 10px;
+                    font-size: 1.3em;
+                    cursor: pointer;
+                    @media (max-width: $screen-sm) {
+                        font-size: 1.8em;
+                    }
                 }
             }
         }
