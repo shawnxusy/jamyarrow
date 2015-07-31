@@ -13,59 +13,48 @@
     <div class="container">
         {% include "_topnav.html" %}
         <div class="match">
-            <div class="match-search">
+            <form class="match-search" action="{% url 'match' %}" method="post">
                 <div class="match-search-wrapper">
-                    <div class="match-search-token-wrapper">
-                        <p>Lung Cancer: Stage II<span class="glyphicon glyphicon-remove"></span></p>
+                    <div class="match-search-token-wrapper" id="type-stage-wrapper">
+                        <p>Lung Cancer: Stage {{ patient.cancer_stage }}<span class="glyphicon glyphicon-remove"></span></p>
                     </div>
-                    <div class="match-search-token-wrapper">
-                        <p>Age: 50 - 60<span class="glyphicon glyphicon-remove"></span></p>
+                    <div class="match-search-token-wrapper" id="age-wrapper">
+                        <p>Age: Around {{ patient.age }}<span class="glyphicon glyphicon-remove"></span></p>
                     </div>
-                    <input id="match-search-input">
-                    <span class="glyphicon glyphicon-search search-icon"></span>
+                    {% for k in prev_keywords %}
+                    <div class="match-search-token-wrapper" id="age-wrapper">
+                        <p>{{ k }}<span class="glyphicon glyphicon-remove"></span></p>
+                    </div>
+                    {% endfor %}
+                    <input id="match-search-input" name="q">
+                    <input id="match-search-type" name="type" type="hidden" value="{{ patient.cancer_type }}">
+                    <input id="match-search-stage" name="stage" type="hidden" value="{{ patient.cancer_stage }}">
+                    <input id="match-search-age" name="age" type="hidden" value="{{ patient.age }}">
+                    <input id="match-search-input-real" name="qreal" type="hidden">
+                    <button class="glyphicon glyphicon-search search-icon" type="submit"></button>
                 </div>
-                <div class="match-search-advanced center">
+                <div class="match-search-advanced center no-mobile">
                     <p class="vertical-center text-mild-grey">Advanced<span class="glyphicon glyphicon-chevron-down"></span></p>
                 </div>
-            </div>
+                {% csrf_token %}
+            </form>
             <div class="match-result">
                 <div class="match-result-title">
-                    <p>There are 6 cancer patients like you at this hospital</p>
+                    <p class="larger-0"><b>There are {% if result_patients %} {{ result_patients.count }} {% else %} 0 {% endif %}cancer patients like you at this hospital</b></p>
                 </div>
                 <div class="match-result-content">
-                    <div class="match-result-item">
-                        <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
-                        <p class="match-result-item-title">johnesco<span class="glyphicon glyphicon-envelope"></span></p>
-                        <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
-                    </div>
-                    <div class="match-result-item">
-                        <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
-                        <p class="match-result-item-title">johnesco<span class="glyphicon glyphicon-envelope"></span></p>
-                        <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
-                    </div>
-                    <div class="match-result-item">
-                        <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
-                        <p class="match-result-item-title">johnesco<span class="glyphicon glyphicon-envelope"></span></p>
-                        <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
-                    </div>
-                    <div class="match-result-item">
-                        <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
-                        <p class="match-result-item-title">johnesco<span class="glyphicon glyphicon-envelope"></span></p>
-                        <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
-                    </div>
-                    <div class="match-result-item">
-                        <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
-                        <p class="match-result-item-title">johnesco<span class="glyphicon glyphicon-envelope"></span></p>
-                        <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
-                    </div>
-                    <div class="match-result-item">
-                        <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
-                        <p class="match-result-item-title">johnesco<span class="glyphicon glyphicon-envelope"></span></p>
-                        <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
-                    </div>
+                    {% for p in result_patients %}
+                    <a href="{% url 'view_timeline' p.id %}" class="match-result-item-wrapper">
+                        <div class="match-result-item center">
+                            <img class="match-result-item-patient-image" src="{% static 'img/profile-jane.png' %}">
+                            <p class="match-result-item-title">{{ p.name }} {% if p.contact_visible %}<span class="glyphicon glyphicon-envelope"></span></p> {% endif %}
+                            <p class="match-result-item-quote">"Don't deny the diagnosis; try to defy the verdict."</p>
+                        </div>
+                    </a>
+                    {% endfor %}
                 </div>
             </div>
-            <a href="{% url 'reset_privacy' %}">Reset your privacy</a>
+            <a href="{% url 'reset_privacy' %}" id="reset-privacy">Reset your privacy</a>
         </div>
     </div>
 {% endblock %}

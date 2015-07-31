@@ -16,6 +16,10 @@ def homepage(request):
 	patient = Patient.objects.get(user=request.user)
 	context['patient'] = patient
 
+	#get quote
+	quote = Quote.objects.filter(patient=patient)[0]
+	context['quote'] = quote
+
 	now = timezone.localtime(timezone.now()).strftime('%H')
 	now = int(now[1]) if now[0] == '0' else int(now) #get the pure hour
 	if now >=6 and now < 10:
@@ -118,4 +122,20 @@ def add_track_entry(request, track_item_id):
 		new_track_entry.save()
 		data['errors'] = ""
 		data['track_entry_id'] = new_track_entry.id
+		return HttpResponse(json.dumps(data), content_type='application/json')
+
+def edit_quote(request):
+	data = {}
+	if request.method == "GET":
+		error = "Request not made via POST!"
+		data["error"] = error
+		return HttpResponse(json.dumps(data), content_type='application/json')
+
+	else:
+		quote = Quote.objects.get(patient__user=request.user)
+		quote.content = request.POST['content']
+		quote.author = request.POST['author']
+		quote.save()
+
+		data["success"] = "success!"
 		return HttpResponse(json.dumps(data), content_type='application/json')

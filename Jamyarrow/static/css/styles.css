@@ -478,6 +478,23 @@ h5, .h5 {
     .hero .hero-greeting .hero-greeting-quote {
       font-size: 1.05em;
       margin-top: 10px; }
+      .hero .hero-greeting .hero-greeting-quote #edit-quote {
+        cursor: pointer; }
+      .hero .hero-greeting .hero-greeting-quote input:focus, .hero .hero-greeting .hero-greeting-quote button:focus {
+        outline: none; }
+      .hero .hero-greeting .hero-greeting-quote #hero-greeting-quote-modify-content {
+        width: 90%;
+        border: 1px solid #ededed; }
+      .hero .hero-greeting .hero-greeting-quote #hero-greeting-quote-modify-author {
+        width: 50%;
+        margin-top: 10px;
+        border: 1px solid #ededed; }
+      .hero .hero-greeting .hero-greeting-quote #hero-greeting-quote-submit {
+        margin-left: 10px;
+        color: #ced0cd;
+        cursor: pointer;
+        background-color: #ffffff;
+        border: 1px solid #ededed; }
       @media (max-width: 420px) {
         .hero .hero-greeting .hero-greeting-quote {
           margin: 40px 20px 0 20px;
@@ -1594,11 +1611,20 @@ h5, .h5 {
     color: #313131;
     position: absolute;
     float: left; }
+    @media (max-width: 420px) {
+      .match .privacy-setting {
+        margin: 15px 3%; } }
     .match .privacy-setting .privacy-title {
       padding: 15px 25px 10px 25px;
       border-bottom: 1px solid #ededed; }
+      @media (max-width: 420px) {
+        .match .privacy-setting .privacy-title {
+          font-size: 1.3em; } }
     .match .privacy-setting .privacy-content {
       padding: 15px 25px 10px 25px; }
+      @media (max-width: 420px) {
+        .match .privacy-setting .privacy-content {
+          font-size: 1.2em; } }
       .match .privacy-setting .privacy-content .privacy-content-title {
         padding-top: 10px; }
       .match .privacy-setting .privacy-content .privacy-content-item {
@@ -1608,10 +1634,17 @@ h5, .h5 {
           float: left;
           width: 15%;
           padding: 10px 0 0 5px; }
+          @media (max-width: 420px) {
+            .match .privacy-setting .privacy-content .privacy-content-item .privacy-toggle {
+              width: 20%;
+              margin-right: 10px; } }
         .match .privacy-setting .privacy-content .privacy-content-item .privacy-content-item-content p {
           margin: 0; }
         .match .privacy-setting .privacy-content .privacy-content-item #privacy-timeline-content {
           float: left; }
+          @media (max-width: 420px) {
+            .match .privacy-setting .privacy-content .privacy-content-item #privacy-timeline-content {
+              float: none; } }
         .match .privacy-setting .privacy-content .privacy-content-item #privacy-timeline-preview {
           margin-bottom: 15px;
           background-color: #f9fafb;
@@ -1621,6 +1654,9 @@ h5, .h5 {
           top: 5px;
           border: 1px solid #ededed;
           font-weight: 600; }
+          @media (max-width: 420px) {
+            .match .privacy-setting .privacy-content .privacy-content-item #privacy-timeline-preview {
+              margin-top: 10px; } }
       .match .privacy-setting .privacy-content .privacy-content-separater {
         border-bottom: 1px solid #ededed; }
     .match .privacy-setting .privacy-progress {
@@ -1693,6 +1729,10 @@ h5, .h5 {
     margin: 50px 15% 0 15%;
     color: #313131;
     overflow: hidden; }
+    @media (max-width: 420px) {
+      .match .match-search {
+        margin: 15px 3%;
+        font-size: 1.2em; } }
     .match .match-search .match-search-wrapper {
       width: 85%;
       float: left;
@@ -1700,6 +1740,9 @@ h5, .h5 {
       border: 2px solid #ededed;
       padding: 5px 15px;
       position: relative; }
+      @media (max-width: 420px) {
+        .match .match-search .match-search-wrapper {
+          width: 100%; } }
       .match .match-search .match-search-wrapper .match-search-token-wrapper {
         float: left;
         padding: 10px 15px;
@@ -1721,13 +1764,19 @@ h5, .h5 {
         width: 35%; }
         .match .match-search .match-search-wrapper #match-search-input:active, .match .match-search .match-search-wrapper #match-search-input:checked, .match .match-search .match-search-wrapper #match-search-input:focus, .match .match-search .match-search-wrapper #match-search-input:link {
           outline: none; }
+        @media (max-width: 420px) {
+          .match .match-search .match-search-wrapper #match-search-input {
+            width: 100%;
+            display: block; } }
       .match .match-search .match-search-wrapper .search-icon {
         position: absolute;
-        right: 25px;
+        right: 10px;
         top: 17px;
         font-size: 1.5em;
         color: #ededed;
-        cursor: pointer; }
+        cursor: pointer;
+        background-color: inherit;
+        border: none; }
     .match .match-search .match-search-advanced {
       width: 15%;
       float: left;
@@ -1744,4 +1793,46 @@ h5, .h5 {
   .match .match-result {
     clear: both;
     color: #313131;
-    margin: 30px 15% 0 15%; }
+    margin: 30px 15% 0 15%;
+    overflow: hidden; }
+    @media (max-width: 420px) {
+      .match .match-result {
+        margin: 15px 3%;
+        font-size: 1.2em; } }
+    .match .match-result .match-result-content {
+      margin: 15px -1% 0 -1%; }
+      .match .match-result .match-result-content .match-result-item {
+        background-color: #ffffff;
+        border: 1px solid #ededed;
+        width: 31%;
+        float: left;
+        margin: 0 1% 15px 1%;
+        padding: 15px 20px; }
+        @media (max-width: 420px) {
+          .match .match-result .match-result-content .match-result-item {
+            width: 100%; } }
+        .match .match-result .match-result-content .match-result-item:hover {
+          border: 1px solid #5aade5; }
+        .match .match-result .match-result-content .match-result-item .match-result-item-patient-image {
+          width: 60%; }
+          @media (max-width: 420px) {
+            .match .match-result .match-result-content .match-result-item .match-result-item-patient-image {
+              width: 30%;
+              float: left; } }
+        .match .match-result .match-result-content .match-result-item .match-result-item-title {
+          margin-top: 15px;
+          color: #2e97de;
+          font-weight: 600;
+          font-size: 1.2em; }
+          .match .match-result .match-result-content .match-result-item .match-result-item-title span {
+            margin-left: 10px;
+            color: #ced0cd;
+            position: relative;
+            top: 3px;
+            cursor: pointer; }
+        @media (max-width: 420px) {
+          .match .match-result .match-result-content .match-result-item .match-result-item-quote {
+            margin-left: 32%;
+            margin-right: 2%; } }
+  .match #reset-privacy {
+    clear: both; }

@@ -21,11 +21,12 @@
                 <h5 class="capitalized"><b>Good morning, {{ patient.name | firstname }}</b></h5>
             </div>
             <div class="hero-greeting-quote">
-                <p>
-                    "The struggle you're in today is developing the strength you need tomorrow."
+                <p id="hero-greeting-quote-content">
+                    {{ quote.content }}
+                    <span id="edit-quote" class="glyphicon glyphicon-pencil"></span>
                 </p>
-                <p class="smaller-1 neutral-grey">
-                    <i>- Anonymous</i>
+                <p class="smaller-1 neutral-grey" id="hero-greeting-quote-author">
+                    <i>- {% if not quote.author %}Anonymous{% else %}{{ quote.author }}{% endif %}</i>
                 </p>
             </div>
         </div>

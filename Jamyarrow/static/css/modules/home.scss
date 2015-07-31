@@ -56,6 +56,28 @@
         .hero-greeting-quote {
             font-size: 1.05em;
             margin-top: 10px;
+            #edit-quote {
+                cursor: pointer;
+            }
+            input:focus, button:focus {
+                outline: none;
+            }
+            #hero-greeting-quote-modify-content {
+                width: 90%;
+                border: 1px solid $subtle-grey;
+            }
+            #hero-greeting-quote-modify-author {
+                width: 50%;
+                margin-top: 10px;
+                border: 1px solid $subtle-grey;
+            }
+            #hero-greeting-quote-submit {
+                margin-left: 10px;
+                color: $divider-grey;
+                cursor: pointer;
+                background-color: $white;
+                border: 1px solid $subtle-grey;
+            }
 
             @media (max-width: $screen-sm) {
         		margin: 40px 20px 0 20px;

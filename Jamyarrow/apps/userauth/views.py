@@ -42,6 +42,10 @@ def signup(request):
 		exercise = TrackedItem(patient=new_patient, name="exercise", category="AT", severity=False, duration=True, quality=False, yes_no=False, goal=60)
 		exercise.save()
 
+		# Add a default quote
+		quote = Quote(patient=new_patient, content="The struggle you're in today is developing the strength you need tomorrow.")
+		quote.save()
+
 		new_user.backend = 'django.contrib.auth.backends.ModelBackend'
 		login(request, new_user)
 

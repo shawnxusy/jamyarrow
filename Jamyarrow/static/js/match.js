@@ -124,35 +124,70 @@ $(document).ready(function() {
         // Calculate the total width
         var totalWidth = $(input).parent().width();
         var totalTokenWidth = 0;
-        $(input).parent().find(".match-search-token-wrapper").each(function() {
-            totalTokenWidth += $(this).outerWidth();
-        });
-        $(input).css("width", (totalWidth - totalTokenWidth - 50) + "px");
+        if ($(".match-search-token-wrapper").length !== 0) {
+            var noOfLine = Math.floor($($(".match-search-wrapper")[0]).height() / $($(".match-search-token-wrapper")[0]).outerHeight());
+
+            $(input).parent().find(".match-search-token-wrapper").each(function() {
+                if ($(this).position().top > ($($(".match-search-token-wrapper")[0]).outerHeight() * (noOfLine - 1))) {
+                    totalTokenWidth += $(this).outerWidth();
+                }
+            });
+            var remainingWidth = totalWidth - totalTokenWidth;
+            console.log(remainingWidth);
+
+            if (remainingWidth < 80) {
+                $(input).css("width", "100%");
+            }
+            else {
+                $(input).css("width", (remainingWidth - 60) + "px");
+            }
+        }
+        else {
+            $(input).css("width", "100%");
+        }
     }
 
     $("#match-search-input").bind("keyup", function(e) {
         var key = e.keyCode || e.which;
         var len = $(this).val().length;
 
-        if (key == 32) {
+        if (key == 32) { // space
             if ($(this).val() === " ") {
-                console.log("haha");
                 $(this).val("");
             }
             else {
-                var wrapper = $("<div class='match-search-token-wrapper'><p>" + $(this).val().substring(0, len) + "<span class='glyphicon glyphicon-remove'></span></p></div>");
+                var entry = $(this).val().substring(0, len-1);
+                var wrapper = $("<div class='match-search-token-wrapper'><p>" + entry + "<span class='glyphicon glyphicon-remove'></span></p></div>");
                 if ($(this).prev().length !== 0) {
                     $(wrapper).insertAfter($(this).prev());
                 }
                 else {
                     $(this).parent().prepend($(wrapper));
                 }
+                // Temporary change input width to 0
+                $("#match-search-input").css("width", "0");
+                var input_real = cleanedString($("#match-search-input-real").val() + " " + entry);
+                $("#match-search-input-real").val(input_real);
                 $(this).val("");
                 changeSearchInput();
             }
         }
         if (((key == 46) || (key == 8)) && ($(this).val() === "")) {
+            if ($(this).prev().attr("id") == "age-wrapper") {
+                $("#match-search-age").remove();
+            }
+            if ($(this).prev().attr("id") == "type-stage-wrapper") {
+                $("#match-search-type").remove();
+                $("#match-search-stage").remove();
+            }
+            var last = $(this).prev().find("p").text();
+            var after_deletion = cleanedString($("#match-search-input-real").val().replace(last, ""));
+            $("#match-search-input-real").val(after_deletion);
             $(this).prev().remove();
+
+            // Temporary change input width to 0
+            $("#match-search-input").css("width", "0");
+            
             changeSearchInput();
         }
     });
@@ -168,4 +203,16 @@ $(document).ready(function() {
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+function cleanedString(str) {
+    var newStr = "";
+    var splitted = str.split(" ");
+    for (var i = 0; i < splitted.length; i++) {
+        if (splitted[i] !== "") {
+            newStr = newStr.concat(splitted[i] + " ");
+        }
+    }
+    newStr = newStr.substring(0, newStr.length - 1);
+    return newStr;
 }

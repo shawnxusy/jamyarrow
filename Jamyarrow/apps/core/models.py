@@ -34,9 +34,6 @@ class Patient(models.Model):
 									choices=CANCER_TYPES)
 	cancer_stage = models.IntegerField(default=1)
 
-	#quote
-	quote = models.CharField(max_length=50)
-
 	#tour of case match
 	case_match_tour = models.BooleanField(default=False)
 
@@ -127,6 +124,12 @@ class Alert(models.Model):
 	dayweek = models.CharField(max_length=2,
 								choices=DAYS)
 
+class Quote(models.Model):
+	patient = models.ForeignKey(Patient)
+	content = models.CharField(max_length=200)
+	author = models.CharField(max_length=50, blank=True)
+	def __unicode__(self):
+		return u'%s' % self.content
 
 class TimelineEvent(models.Model):
 	MILESTONE = 'MS'
